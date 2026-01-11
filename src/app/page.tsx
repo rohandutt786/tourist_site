@@ -1,20 +1,19 @@
-import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+import HomeHero from "@/features/home/hero";
+import HomeTours from "@/features/home/tours";
+import Footer from "@/features/home/footer";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Tourist Site | Explore the World",
+  description: "Discover top tourist destinations and travel packages.",
+};
+
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold text-red-800">
-          Welcome to Tourist Site
-        </h1>
-        <p className="text-gray-600">
-          Discover the most beautiful places around the world.
-        </p>
-        {/* Shadcn UI Button */}
-        <Button variant="default" size="lg">
-          Explore Tourism
-        </Button>
-      </div>
+    <main>
+      <HomeHero />
+      <HomeTours />
+      <Footer />
     </main>
   );
 }
