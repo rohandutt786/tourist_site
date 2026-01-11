@@ -1,0 +1,65 @@
+{
+  "homeHero": {
+    "title": "Explore Beautiful Destinations",
+    "subtitle": "Discover, travel, and create unforgettable memories",
+    "buttonText": "Explore Tours",
+    "image": "/images/home.jpg"
+  },
+  "packages": [
+    {
+      "id": 1,
+      "title": "Manali Adventure",
+      "location": "Himachal Pradesh, India",
+      "price": "₹18,999",
+      "image": "/images/manali.jpg",
+      "description": "Experience snow-capped mountains, adventure sports, and scenic views."
+    },
+    {
+      "id": 2,
+      "title": "Goa Beach Holiday",
+      "location": "Goa, India",
+      "price": "₹22,499",
+      "image": "/images/goa.jpg",
+      "description": "Relax on golden beaches, enjoy nightlife, and explore Portuguese culture."
+    },
+    {
+      "id": 3,
+      "title": "Jaipur Heritage Tour",
+      "location": "Rajasthan, India",
+      "price": "₹15,999",
+      "image": "/images/jaipur.jpg",
+      "description": "Discover royal palaces, forts, and the vibrant culture of Rajasthan."
+    }
+  ],
+  "about": {
+    "title": "About Us",
+    "subtitle": "We help travelers discover beautiful destinations and create unforgettable journeys.",
+    "image": "/images/our-team.jpg",
+    "mission": {
+      "title": "Our Mission",
+      "text": "Our mission is to simplify travel planning by providing reliable information and curated destinations for travelers worldwide.",
+      "image": "/images/our-mission.jpg"
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "We envision a future where everyone can explore the world confidently and effortlessly.",
+      "image": "/images/our-vision.jpg"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions about tour packages or need help planning your trip? We’re here to help you.",
+    "backgroundImage": "/images/contact-us.jpg",
+
+    "info": {
+      "email": "support@touristsite.com",
+      "phone": "+91 98765 43210",
+      "address": "New Delhi, India",
+      "hours": "Monday – Saturday: 9:00 AM – 6:00 PM"
+    },
+
+    "form": {
+      "title": "Send Us a Message"
+    }
+  }
+}
