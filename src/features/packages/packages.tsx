@@ -109,173 +109,126 @@ export default function PackagesFeature() {
       {/* DIALOG */}
       <Dialog open={!!selectedPkg} onOpenChange={() => setSelectedPkg(null)}>
         <DialogContent className="max-w-3xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-2xl">
-          {selectedPkg && (
-            <>
-              {/* IMAGE SLIDER */}
-              {selectedPkg.facilities?.tourImages && (
-                <div className="relative w-full h-[300px] md:h-[380px] rounded-2xl overflow-hidden bg-gray-100">
-                  <div
-                    className="flex w-full h-full transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentImage * 100}%)` }}
-                  >
-                    {selectedPkg.facilities.tourImages.map((img, i) => (
+          {selectedPkg &&
+            (() => {
+              const totalImages =
+                selectedPkg.facilities?.tourImages?.length || 0;
+
+              return (
+                <>
+                  {/* IMAGE SLIDER */}
+                  {selectedPkg.facilities?.tourImages && (
+                    <div className="relative w-full h-[300px] md:h-[380px] rounded-2xl overflow-hidden bg-gray-100">
                       <div
-                        key={i}
-                        className="relative min-w-full h-full flex items-center justify-center"
+                        className="flex w-full h-full transition-transform duration-500 ease-in-out"
+                        style={{
+                          transform: `translateX(-${currentImage * 100}%)`,
+                        }}
                       >
-                        {/* soft blurred background */}
-                        <Image
-                          src={img}
-                          alt=""
-                          fill
-                          sizes="(max-width: 768px) 100vw, 700px"
-                          className="object-cover blur-2xl scale-110 opacity-40"
-                        />
+                        {selectedPkg.facilities.tourImages.map((img, i) => (
+                          <div
+                            key={i}
+                            className="relative min-w-full h-full flex items-center justify-center"
+                          >
+                            {/* soft blurred background */}
+                            <Image
+                              src={img}
+                              alt=""
+                              fill
+                              sizes="(max-width: 768px) 100vw, 700px"
+                              className="object-cover blur-2xl scale-110 opacity-40"
+                            />
 
-                        {/* main image */}
-                        <Image
-                          src={img}
-                          alt=""
-                          fill
-                          sizes="(max-width: 768px) 100vw, 700px"
-                          className="object-contain z-10"
-                        />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* LEFT BUTTON */}
-                  <button
-                    onClick={() =>
-                      setCurrentImage((prev) => {
-                        const total =
-                          selectedPkg.facilities!.tourImages!.length;
-                        return prev === 0 ? total - 1 : prev - 1;
-                      })
-                    }
-                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur p-2 rounded-full shadow hover:bg-white"
-                  >
-                    <ChevronLeft />
-                  </button>
-
-                  {/* RIGHT BUTTON */}
-                  <button
-                    onClick={() =>
-                      setCurrentImage((prev) => {
-                        const total =
-                          selectedPkg.facilities!.tourImages!.length;
-                        return prev === total - 1 ? 0 : prev + 1;
-                      })
-                    }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur p-2 rounded-full shadow hover:bg-white"
-                  >
-                    <ChevronRight />
-                  </button>
-                </div>
-              )}
-
-              {/* HEADER */}
-              <DialogHeader className="mt-5">
-                <DialogTitle className="text-3xl">
-                  {selectedPkg.title}
-                </DialogTitle>
-                <p className="flex items-center gap-1 text-sm text-gray-500">
-                  <MapPin size={14} /> {selectedPkg.location}
-                </p>
-
-                {/* FACILITIES ICONS */}
-                <div className="flex items-center gap-6 mt-3">
-                  {selectedPkg.facilities?.meal && (
-                    <div className="flex items-center gap-2 text-orange-500">
-                      <Coffee size={18} />
-                      <span className="text-sm font-medium">Meal</span>
-                    </div>
-                  )}
-                  {selectedPkg.facilities?.hotel && (
-                    <div className="flex items-center gap-2 text-purple-600">
-                      <HomeIcon size={18} />
-                      <span className="text-sm font-medium">Hotel</span>
-                    </div>
-                  )}
-                </div>
-              </DialogHeader>
-
-              {/* TRANSPORT SELECT */}
-              {/* TRANSPORT SELECT WITH CITY-WISE ITINERARY */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                {selectedPkg.facilities?.transport?.map((mode) => {
-                  const transportMode = mode as "Cab" | "Volvo";
-
-                  const itinerary = selectedPkg.facilities?.itinerary;
-
-                  // 🔹 CASE 1: FLAT (Manali, J&K)
-                  if (Array.isArray(itinerary?.[transportMode])) {
-                    return (
-                      <div key={mode} className="border rounded-xl p-4">
-                        <div className="flex items-center gap-3 mb-3">
-                          {mode === "Cab" ? (
-                            <Car className="text-blue-600" />
-                          ) : (
-                            <Bus className="text-green-600" />
-                          )}
-                          <div>
-                            <p className="font-semibold">By {mode}</p>
-                            <p className="text-xs text-gray-500">
-                              {mode === "Cab"
-                                ? "Private Travel"
-                                : "AC Luxury Bus"}
-                            </p>
+                            {/* main image */}
+                            <Image
+                              src={img}
+                              alt=""
+                              fill
+                              sizes="(max-width: 768px) 100vw, 700px"
+                              className="object-contain z-10"
+                            />
                           </div>
-                        </div>
-
-                        <ul className="space-y-2 text-sm">
-                          {itinerary?.[transportMode]?.map(
-                            (day: string, i: number) => (
-                              <li
-                                key={i}
-                                className={`${
-                                  mode === "Cab" ? "bg-blue-50" : "bg-green-50"
-                                } rounded-lg px-3 py-2`}
-                              >
-                                {day}
-                              </li>
-                            )
-                          )}
-                        </ul>
+                        ))}
                       </div>
-                    );
-                  }
 
-                  // 🔹 CASE 2: CITY-WISE (Rajasthan, Uttarakhand)
-                  return (
-                    <div key={mode}>
-                      {Object.entries(itinerary || {}).map(
-                        ([city, plans]: [string, any]) =>
-                          plans?.[mode] && (
-                            <div
-                              key={city}
-                              className="border rounded-xl p-4 mb-4"
-                            >
-                              <div className="flex items-center gap-3 mb-3">
-                                {mode === "Cab" ? (
-                                  <Car className="text-blue-600" />
-                                ) : (
-                                  <Bus className="text-green-600" />
-                                )}
-                                <div>
-                                  <p className="font-semibold">
-                                    {city} by {mode}
-                                  </p>
-                                  <p className="text-xs text-gray-500">
-                                    {mode === "Cab"
-                                      ? "Private Travel"
-                                      : "AC Luxury Bus"}
-                                  </p>
-                                </div>
+                      {/* LEFT BUTTON */}
+                      {totalImages > 1 && currentImage > 0 && (
+                        <button
+                          onClick={() => setCurrentImage((prev) => prev - 1)}
+                          className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur p-2 rounded-full shadow hover:bg-white"
+                        >
+                          <ChevronLeft />
+                        </button>
+                      )}
+                      {/* RIGHT BUTTON */}
+                      {totalImages > 1 && currentImage < totalImages - 1 && (
+                        <button
+                          onClick={() => setCurrentImage((prev) => prev + 1)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur p-2 rounded-full shadow hover:bg-white"
+                        >
+                          <ChevronRight />
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  {/* HEADER */}
+                  <DialogHeader className="mt-5">
+                    <DialogTitle className="text-3xl">
+                      {selectedPkg.title}
+                    </DialogTitle>
+                    <p className="flex items-center gap-1 text-sm text-gray-500">
+                      <MapPin size={14} /> {selectedPkg.location}
+                    </p>
+
+                    {/* FACILITIES ICONS */}
+                    <div className="flex items-center gap-6 mt-3">
+                      {selectedPkg.facilities?.meal && (
+                        <div className="flex items-center gap-2 text-orange-500">
+                          <Coffee size={18} />
+                          <span className="text-sm font-medium">Meal</span>
+                        </div>
+                      )}
+                      {selectedPkg.facilities?.hotel && (
+                        <div className="flex items-center gap-2 text-purple-600">
+                          <HomeIcon size={18} />
+                          <span className="text-sm font-medium">Hotel</span>
+                        </div>
+                      )}
+                    </div>
+                  </DialogHeader>
+
+                  {/* TRANSPORT SELECT */}
+                  {/* TRANSPORT SELECT WITH CITY-WISE ITINERARY */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    {selectedPkg.facilities?.transport?.map((mode) => {
+                      const transportMode = mode as "Cab" | "Volvo";
+
+                      const itinerary = selectedPkg.facilities?.itinerary;
+
+                      // 🔹 CASE 1: FLAT (Manali, J&K)
+                      if (Array.isArray(itinerary?.[transportMode])) {
+                        return (
+                          <div key={mode} className="border rounded-xl p-4">
+                            <div className="flex items-center gap-3 mb-3">
+                              {mode === "Cab" ? (
+                                <Car className="text-blue-600" />
+                              ) : (
+                                <Bus className="text-green-600" />
+                              )}
+                              <div>
+                                <p className="font-semibold">By {mode}</p>
+                                <p className="text-xs text-gray-500">
+                                  {mode === "Cab"
+                                    ? "Private Travel"
+                                    : "AC Luxury Bus"}
+                                </p>
                               </div>
+                            </div>
 
-                              <ul className="space-y-2 text-sm">
-                                {plans[mode].map((day: string, i: number) => (
+                            <ul className="space-y-2 text-sm">
+                              {itinerary?.[transportMode]?.map(
+                                (day: string, i: number) => (
                                   <li
                                     key={i}
                                     className={`${
@@ -286,17 +239,67 @@ export default function PackagesFeature() {
                                   >
                                     {day}
                                   </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </>
-          )}
+                                )
+                              )}
+                            </ul>
+                          </div>
+                        );
+                      }
+
+                      // 🔹 CASE 2: CITY-WISE (Rajasthan, Uttarakhand)
+                      return (
+                        <div key={mode}>
+                          {Object.entries(itinerary || {}).map(
+                            ([city, plans]: [string, any]) =>
+                              plans?.[mode] && (
+                                <div
+                                  key={city}
+                                  className="border rounded-xl p-4 mb-4"
+                                >
+                                  <div className="flex items-center gap-3 mb-3">
+                                    {mode === "Cab" ? (
+                                      <Car className="text-blue-600" />
+                                    ) : (
+                                      <Bus className="text-green-600" />
+                                    )}
+                                    <div>
+                                      <p className="font-semibold">
+                                        {city} by {mode}
+                                      </p>
+                                      <p className="text-xs text-gray-500">
+                                        {mode === "Cab"
+                                          ? "Private Travel"
+                                          : "AC Luxury Bus"}
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  <ul className="space-y-2 text-sm">
+                                    {plans[mode].map(
+                                      (day: string, i: number) => (
+                                        <li
+                                          key={i}
+                                          className={`${
+                                            mode === "Cab"
+                                              ? "bg-blue-50"
+                                              : "bg-green-50"
+                                          } rounded-lg px-3 py-2`}
+                                        >
+                                          {day}
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              )
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            })()}
         </DialogContent>
       </Dialog>
     </section>
