@@ -203,96 +203,88 @@ export default function PackagesFeature() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     {selectedPkg.facilities?.transport?.map((mode) => {
                       const transportMode = mode as "Cab" | "Volvo";
-
                       const itinerary = selectedPkg.facilities?.itinerary;
 
-                      // 🔹 CASE 1: FLAT (Manali, J&K)
-                      if (Array.isArray(itinerary?.[transportMode])) {
-                        return (
-                          <div key={mode} className="border rounded-xl p-4">
-                            <div className="flex items-center gap-3 mb-3">
-                              {mode === "Cab" ? (
-                                <Car className="text-blue-600" />
-                              ) : (
-                                <Bus className="text-green-600" />
-                              )}
-                              <div>
-                                <p className="font-semibold">By {mode}</p>
-                                <p className="text-xs text-gray-500">
-                                  {mode === "Cab"
-                                    ? "Private Travel"
-                                    : "AC Luxury Bus"}
-                                </p>
-                              </div>
-                            </div>
-
-                            <ul className="space-y-2 text-sm">
-                              {itinerary?.[transportMode]?.map(
-                                (day: string, i: number) => (
-                                  <li
-                                    key={i}
-                                    className={`${
-                                      mode === "Cab"
-                                        ? "bg-blue-50"
-                                        : "bg-green-50"
-                                    } rounded-lg px-3 py-2`}
-                                  >
-                                    {day}
-                                  </li>
-                                )
-                              )}
-                            </ul>
-                          </div>
-                        );
-                      }
-
-                      // 🔹 CASE 2: CITY-WISE (Rajasthan, Uttarakhand)
                       return (
-                        <div key={mode}>
-                          {Object.entries(itinerary || {}).map(
-                            ([city, plans]: [string, any]) =>
-                              plans?.[mode] && (
-                                <div
-                                  key={city}
-                                  className="border rounded-xl p-4 mb-4"
-                                >
-                                  <div className="flex items-center gap-3 mb-3">
-                                    {mode === "Cab" ? (
-                                      <Car className="text-blue-600" />
-                                    ) : (
-                                      <Bus className="text-green-600" />
-                                    )}
-                                    <div>
-                                      <p className="font-semibold">
-                                        {city} by {mode}
-                                      </p>
-                                      <p className="text-xs text-gray-500">
-                                        {mode === "Cab"
-                                          ? "Private Travel"
-                                          : "AC Luxury Bus"}
-                                      </p>
-                                    </div>
-                                  </div>
+                        <div key={mode} className="border rounded-xl p-4">
+                          {/* TRANSPORT HEADER */}
+                          <div className="flex items-center gap-3 mb-4">
+                            {mode === "Cab" ? (
+                              <Car className="text-blue-600" />
+                            ) : (
+                              <Bus className="text-green-600" />
+                            )}
 
-                                  <ul className="space-y-2 text-sm">
-                                    {plans[mode].map(
-                                      (day: string, i: number) => (
-                                        <li
-                                          key={i}
-                                          className={`${
-                                            mode === "Cab"
-                                              ? "bg-blue-50"
-                                              : "bg-green-50"
-                                          } rounded-lg px-3 py-2`}
-                                        >
-                                          {day}
-                                        </li>
-                                      )
-                                    )}
-                                  </ul>
-                                </div>
-                              )
-                          )}
+                            <div>
+                              <p className="font-semibold">By {mode}</p>
+                              <p className="text-xs text-gray-500">
+                                {mode === "Cab"
+                                  ? "Private Travel"
+                                  : "AC Luxury Bus"}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* CITY WISE CONTAINERS */}
+                          <div className="space-y-4">
+                            {itinerary &&
+                              Object.entries(itinerary).map(
+                                ([city, plans]: [string, any]) => {
+                                  const days = plans?.[transportMode];
+                                  if (!days || days.length === 0) return null;
+
+                                  return (
+                                    <div
+                                      key={city}
+                                      className={`rounded-lg p-3 border ${
+                                        mode === "Cab"
+                                          ? "bg-blue-50 border-blue-200"
+                                          : "bg-green-50 border-green-200"
+                                      }`}
+                                    >
+                                      {/* CITY NAME */}
+                                      <h4 className="font-semibold text-sm mb-2">
+                                        📍 {city}
+                                      </h4>
+
+                                      {/* DAY PLANS */}
+                                      <ul className="space-y-2 text-sm">
+                                        {days.map((day: string, i: number) => (
+                                          <li
+                                            key={i}
+                                            className="bg-white rounded-md px-3 py-2 shadow-sm"
+                                          >
+                                            {day}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  );
+                                }
+                              )}
+
+                            {/* FALLBACK: FLAT ITINERARY */}
+                            {Array.isArray(itinerary?.[transportMode]) && (
+                              <div
+                                className={`rounded-lg p-3 ${
+                                  mode === "Cab" ? "bg-blue-50" : "bg-green-50"
+                                }`}
+                              >
+                                <ul className="space-y-2 text-sm">
+                                  {itinerary[transportMode].map(
+                                    (day: string, i: number) => (
+                                      <li
+                                        key={i}
+                                        className="bg-white rounded-md px-3 py-2 shadow-sm"
+                                      >
+                                        {day}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       );
                     })}
