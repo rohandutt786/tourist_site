@@ -70,6 +70,30 @@ export default function ContactUsFeature() {
                 className="w-full border rounded-lg px-4 py-2"
               />
 
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full border rounded-lg px-4 py-2"
+              />
+
+              <input
+                type="date"
+                className="w-full border rounded-lg px-4 py-2"
+              />
+
+              <input
+                type="text"
+                placeholder="Destination"
+                className="w-full border rounded-lg px-4 py-2"
+              />
+
+              <input
+                type="number"
+                min="1"
+                placeholder="Number of Persons"
+                className="w-full border rounded-lg px-4 py-2"
+              />
+
               <textarea
                 placeholder="Your Message"
                 rows={4}
@@ -78,7 +102,7 @@ export default function ContactUsFeature() {
 
               <button
                 type="button"
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
               >
                 Send Message
               </button>
