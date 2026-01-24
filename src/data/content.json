@@ -8,27 +8,193 @@
   "packages": [
     {
       "id": 1,
-      "title": "Manali Adventure",
-      "location": "Himachal Pradesh, India",
-      "price": "₹18,999",
+      "title": "Manali Tour",
+      "location": "Himachal Pradesh",
       "image": "/images/manali.jpg",
-      "description": "Experience snow-capped mountains, adventure sports, and scenic views."
+      "price": "₹9,999",
+      "description": "Enjoy the beauty of Manali",
+      "facilities": {
+        "meal": true,
+        "hotel": true,
+        "transport": ["Cab", "Volvo"],
+        "tourImages": [
+          "/images/touristplaces/manali/manali1.jpeg",
+          "/images/touristplaces/manali/manali2.jpeg",
+          "/images/touristplaces/manali/manali3.jpeg"
+        ],
+        "itinerary": {
+          "Cab": [
+            "Day 01: Delhi to Manali",
+            "Day 02: Manali Local",
+            "Day 03: Manali to Solang",
+            "Day 04: Manali to Delhi Drop"
+          ],
+          "Volvo": [
+            "Day 01: Delhi to Manali (Overnight Journey by Volvo)",
+            "Day 02: Arrival + Manali Local",
+            "Day 03: Manali to Solang",
+            "Day 04: Manali to Manikaran Kasol + Drop to Volvo Stand (Overnight Journey by Volvo)"
+          ]
+        }
+      }
     },
     {
       "id": 2,
-      "title": "Goa Beach Holiday",
-      "location": "Goa, India",
+      "title": "Jammu & Kashmir Adventure",
+      "location": "Jammu & Kashmir, India",
       "price": "₹22,499",
-      "image": "/images/goa.jpg",
-      "description": "Relax on golden beaches, enjoy nightlife, and explore Portuguese culture."
+      "image": "/images/j&k.jpeg",
+      "description": "Experience breathtaking landscapes, lakes, and mountains in Jammu & Kashmir.",
+      "facilities": {
+        "meal": true,
+        "hotel": true,
+        "transport": ["Cab", "Volvo"],
+        "tourImages": ["/images/touristplaces/jammukashmir/j&k2.jpeg"],
+        "itinerary": {
+          "Cab": [
+            "Day 01: Arrival at Srinagar + Houseboat Stay",
+            "Day 02: Srinagar Local",
+            "Day 03: Srinagar to Sonmarg",
+            "Day 04: Srinagar to Gulmarg",
+            "Day 05: Srinagar to Pahalgam",
+            "Day 06: Pahalgam to Srinagar Drop"
+          ],
+          "Volvo": [
+            "Day 01: Delhi to Srinagar (Overnight Journey by Volvo)",
+            "Day 02: Arrival + Srinagar Local",
+            "Day 03: Srinagar to Sonmarg",
+            "Day 04: Srinagar to Gulmarg",
+            "Day 05: Srinagar to Pahalgam",
+            "Day 06: Pahalgam to Srinagar + Drop to Volvo Stand (Overnight Journey by Volvo)"
+          ]
+        }
+      }
     },
     {
       "id": 3,
-      "title": "Jaipur Heritage Tour",
+      "title": "Rajasthan Tour",
       "location": "Rajasthan, India",
       "price": "₹15,999",
       "image": "/images/jaipur.jpg",
-      "description": "Discover royal palaces, forts, and the vibrant culture of Rajasthan."
+      "description": "Discover royal palaces, forts, and the vibrant culture of Rajasthan.",
+      "facilities": {
+        "meal": true,
+        "hotel": true,
+        "transport": ["Cab", "Volvo"],
+        "tourImages": [
+          "/images/touristplaces/rajasthan/rajasthan1.jpeg",
+          "/images/touristplaces/rajasthan/rajasthan2.jpeg",
+          "/images/touristplaces/rajasthan/rajasthan3.jpeg",
+          "/images/touristplaces/rajasthan/rajasthan4.jpeg"
+        ],
+        "itinerary": {
+          "Jaipur": {
+            "Cab": [
+              "Day 01: Arrival at Jaipur",
+              "Day 02: Jaipur Local",
+              "Day 03: Jaipur To Khatu Shyam + Salasar Balaji",
+              "Day 04: Departure"
+            ],
+            "Volvo": [
+              "Day 01: Delhi to Jaipur (Overnight Journey by Volvo)",
+              "Day 02: Jaipur Local",
+              "Day 03: Jaipur To Khatu Shyam + Salasar Balaji",
+              "Day 04: Departure"
+            ]
+          },
+          "Udaipur": {
+            "Cab": [
+              "Day 01: Arrival at Udaipur",
+              "Day 02: Udaipur Local",
+              "Day 03: Udaipur to Kumbhalgarh",
+              "Day 04: Udaipur to Chitthorgarh",
+              "Day 05: Departure"
+            ],
+            "Volvo": [
+              "Day 01: Delhi to Udaipur (Overnight Journey by Volvo)",
+              "Day 02: Udaipur Local",
+              "Day 03: Udaipur to Kumbhalgarh",
+              "Day 04: Udaipur to Chitthorgarh",
+              "Day 05: Departure"
+            ]
+          },
+          "Jodhpur": {
+            "Cab": [
+              "Day 01: Arrival at Jodhpur",
+              "Day 02: Jodhpur Local Sightseeing",
+              "Day 03: Jodhpur to Jaisalmer",
+              "Day 04: Jaisalmer Local + Camp stay",
+              "Day 05: Jaisalmer Drop"
+            ],
+            "Volvo": [
+              "Day 01: Delhi to Jodhpur (Overnight Journey by Volvo)",
+              "Day 02: Jodhpur Local Sightseeing",
+              "Day 03: Jodhpur to Jaisalmer",
+              "Day 04: Jaisalmer Local + Camp stay",
+              "Day 05: Jaisalmer Drop"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "Uttarakhand Nature Trip",
+      "location": "Uttarakhand, India",
+      "price": "₹18,499",
+      "image": "/images/uttrakhand.jpeg",
+      "description": "Explore serene mountains, rivers, wildlife and spiritual destinations of Uttarakhand.",
+      "facilities": {
+        "meal": true,
+        "hotel": true,
+        "transport": ["Cab", "Volvo"],
+
+        "tourImages": [
+          "/images/touristplaces/uttrakhand/uttrakhan1.jpeg",
+          "/images/touristplaces/uttrakhand/uttrakhand2.jpeg",
+          "/images/touristplaces/uttrakhand/uttrakhand3.jpeg",
+          "/images/touristplaces/uttrakhand/uttrakhand4.jpeg",
+          "/images/touristplaces/uttrakhand/uttrakhand5.jpeg"
+        ],
+        "itinerary": {
+          "Mussoorie–Nainital": {
+            "Cab": [
+              "Day 01: Delhi to Mussoorie",
+              "Day 02: Mussoorie Local Sightseeing",
+              "Day 03: Mussoorie to Haridwar via Rishikesh",
+              "Day 04: Haridwar to Jim Corbett",
+              "Day 05: Jim Corbett to Nainital",
+              "Day 06: Nainital Local Sightseeing",
+              "Day 07: Nainital to Delhi Drop"
+            ],
+            "Volvo": [
+              "Day 01: Delhi to Mussoorie",
+              "Day 02: Mussoorie Local Sightseeing",
+              "Day 03: Mussoorie to Haridwar via Rishikesh",
+              "Day 04: Haridwar to Jim Corbett",
+              "Day 05: Jim Corbett to Nainital",
+              "Day 06: Nainital Local Sightseeing",
+              "Day 07: Nainital to Delhi Drop"
+            ]
+          },
+          "Chopta–Auli Adventure": {
+            "Cab": [
+              "Day 01: Haridwar to Chopta",
+              "Day 02: Chopta to Tungnath & Chandrashila Trek",
+              "Day 03: Chopta to Joshimath",
+              "Day 04: Joshimath to Auli & back to Joshimath",
+              "Day 05: Joshimath to Haridwar Drop"
+            ],
+            "Volvo": [
+              "Day 01: Haridwar to Chopta",
+              "Day 02: Chopta to Tungnath & Chandrashila Trek",
+              "Day 03: Chopta to Joshimath",
+              "Day 04: Joshimath to Auli & back to Joshimath",
+              "Day 05: Joshimath to Haridwar Drop"
+            ]
+          }
+        }
+      }
     }
   ],
   "about": {
