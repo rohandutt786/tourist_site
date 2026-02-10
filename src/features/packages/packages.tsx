@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
@@ -51,35 +52,37 @@ export default function PackagesFeature() {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-20">
-      <h2 className="text-4xl font-bold text-center mb-14">
+      <h2 className="text-4xl font-bold text-center mb-14 b text-[#003566]">
         Our Tour Packages
       </h2>
 
       {/* PACKAGES GRID */}
 
-      <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         {packages.map((pkg) => (
           <div
             key={pkg.id}
-            className="bg-white border rounded-2xl shadow hover:shadow-xl transition overflow-hidden flex flex-col"
+            className="bg-white border rounded-3xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:-translate-y-2 overflow-hidden flex flex-col"
           >
             {/* IMAGE */}
-            <div className="relative h-56">
+            <div className="relative h-64 md:h-72">
               <Image
                 src={pkg.image}
                 alt={pkg.title}
                 fill
                 className="object-cover"
               />
-              <Badge className="absolute top-4 right-4 bg-blue-600">
+              <Badge className="absolute top-4 right-4t bg-[#003566]">
                 {pkg.price}
               </Badge>
             </div>
 
             {/* CONTENT */}
-            <div className="p-6 flex flex-col flex-1">
+            <div className="p-7 flex flex-col flex-1">
               {/* TITLE */}
-              <h3 className="text-xl font-semibold truncate">{pkg.title}</h3>
+              <h3 className="text-2xl font-semibold truncate text-[#003566]">
+                {pkg.title}
+              </h3>
 
               {/* LOCATION */}
               <p className="flex items-center gap-1 text-sm text-gray-500 mt-1 truncate">
@@ -93,7 +96,7 @@ export default function PackagesFeature() {
 
               {/* BUTTON FIXED AT BOTTOM */}
               <Button
-                className="w-full mt-auto"
+                className="w-full mt-auto bg-[#003566]"
                 onClick={() => {
                   setSelectedPkg(pkg);
                   setCurrentImage(0);
@@ -260,7 +263,7 @@ export default function PackagesFeature() {
                                       </ul>
                                     </div>
                                   );
-                                }
+                                },
                               )}
 
                             {/* FALLBACK: FLAT ITINERARY */}
@@ -279,7 +282,7 @@ export default function PackagesFeature() {
                                       >
                                         {day}
                                       </li>
-                                    )
+                                    ),
                                   )}
                                 </ul>
                               </div>

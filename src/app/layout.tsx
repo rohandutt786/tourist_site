@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Urbanist } from "next/font/google";
+
 import "./globals.css";
 import NavbarClient from "./NavbarClient";
- // client wrapper
+import { GlobalLoader } from "@/global/global-loader";
+import Footer from "@/features/home/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Initialize Urbanist font
+const urbanist = Urbanist({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-urbanist",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -25,13 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={urbanist.variable}>
+      <body className="font-sans antialiased">
         {/* Navbar + Sidebar handled inside client wrapper */}
         <NavbarClient />
-        <main>{children}</main>
+        <GlobalLoader>
+          <main>{children}</main>
+        </GlobalLoader>
+        <Footer />
       </body>
     </html>
   );

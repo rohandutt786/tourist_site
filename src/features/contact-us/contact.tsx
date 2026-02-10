@@ -102,7 +102,7 @@ export default function ContactUsFeature() {
 
               <button
                 type="button"
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                className="w-full bg-[#003566] text-white py-2 rounded-lg hover:bg-[#002244] transition"
               >
                 Send Message
               </button>

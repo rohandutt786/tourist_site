@@ -34,7 +34,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="p-6 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-blue-600 select-none">
+          <h2 className="text-xl font-bold text-[#003566] select-none">
             Namoh Tourism
           </h2>
           <button
@@ -56,8 +56,8 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     className={`block px-2 py-1 rounded ${
-                      isActive ? "text-blue-600 font-bold" : "text-gray-700"
-                    } hover:text-blue-600`}
+                      isActive ? "text-[#003566] font-bold" : "text-gray-700"
+                    }hover:bg-[#002244]`}
                   >
                     {item.title}
                   </Link>

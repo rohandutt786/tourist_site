@@ -1,56 +1,45 @@
-import Image from "next/image";
+"use client";
 
-const tours = [
-  {
-    id: 1,
-    title: "Manali",
-    price: "₹18,999",
-    image: "/images/manali.jpg",
-  },
-  {
-    id: 2,
-    title: "Goa",
-    price: "₹22,499",
-    image: "/images/goa.jpg",
-  },
-  {
-    id: 3,
-    title: "Jaipur",
-    price: "₹15,999",
-    image: "/images/jaipur.jpg",
-  },
-];
+import Image from "next/image";
+import Link from "next/link";
+import Marquee from "react-fast-marquee";
+import content from "@/data/content.json";
 
 export default function HomeTours() {
+  const tours = content.tours; // get the tours array from JSON
+
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
-      <h2 className="text-4xl font-bold text-center mb-12">
+    <section id="packages" className="max-w-[1600px] mx-auto px-6 py-16">
+      <h2 className="text-4xl font-bold text-center mb-12 text-[#003566]">
         Popular Tourist Spots
       </h2>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <Marquee gradient={false} speed={50}>
         {tours.map((tour) => (
-          <div
+          <Link
             key={tour.id}
-            className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
+            href="/packages"
+            className="mx-6 min-w-[350px] max-w-[400px] block"
           >
-            <div className="relative h-52">
-              <Image
-                src={tour.image}
-                alt={tour.title}
-                fill
-                className="object-cover"
-              />
+            <div className="bg-white rounded-xl shadow-lg transition-transform duration-300 transform hover:-translate-y-4 hover:shadow-2xl">
+              <div className="relative h-80 w-full">
+                <Image
+                  src={tour.image}
+                  alt={tour.title}
+                  fill
+                  className="object-cover rounded-t-xl"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold mb-2 text-[#003566]">
+                  {tour.title}
+                </h3>
+                <p className="text-gray-700 text-base">{tour.description}</p>
+              </div>
             </div>
-
-            <div className="p-5">
-              <h3 className="text-xl font-semibold mb-2">{tour.title}</h3>
-
-              <p className="text-blue-600 font-bold">{tour.price}</p>
-            </div>
-          </div>
+          </Link>
         ))}
-      </div>
+      </Marquee>
     </section>
   );
 }
