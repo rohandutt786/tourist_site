@@ -25,7 +25,7 @@ export default function Navbar({ setIsOpen }: NavbarProps) {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setIsOpen(true)}
-            className="text-2xl text-blue-600 md:hidden"
+            className="text-2xl text-[#003566] md:hidden"
             aria-label="Open menu"
           >
             ☰
@@ -34,7 +34,7 @@ export default function Navbar({ setIsOpen }: NavbarProps) {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl font-bold text-blue-600 select-none"
+            className="text-2xl font-bold text-[#003566] select-none"
           >
             Namoh Tourism
           </Link>
@@ -48,8 +48,8 @@ export default function Navbar({ setIsOpen }: NavbarProps) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`hover:text-blue-600 ${
-                    isActive ? "text-blue-600 font-bold" : "text-gray-700"
+                  className={`hover:text-[#002244] ${
+                    isActive ? "text-[#003566] font-bold" : "text-gray-700"
                   }`}
                 >
                   {item.title}
@@ -62,7 +62,7 @@ export default function Navbar({ setIsOpen }: NavbarProps) {
         {/* Desktop CTA */}
         <Link
           href="/packages"
-          className="hidden md:inline-block px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="hidden md:inline-block px-5 py-2 bg-[#003566]  text-white rounded-lg hover:bg-[#002244] "
         >
           Book Now
         </Link>

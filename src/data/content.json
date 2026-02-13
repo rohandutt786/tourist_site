@@ -3,8 +3,37 @@
     "title": "Explore Beautiful Destinations",
     "subtitle": "Discover, travel, and create unforgettable memories",
     "buttonText": "Explore Tours",
-    "image": "/images/home.jpg"
+    "image": "/images/home.jpg",
+    "mobileImage": "/images/long-image.jpg"
   },
+
+  "tours": [
+    {
+      "id": 1,
+      "title": "Manali",
+      "description": "A beautiful hill station in Himachal Pradesh.",
+      "image": "/images/manali.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Jammu & Kashmir",
+      "description": "Explore the serene valleys and mountains.",
+      "image": "/images/touristplaces/jammukashmir/j&k2.jpeg"
+    },
+    {
+      "id": 3,
+      "title": "Jaipur",
+      "description": "The Pink City, full of history and culture.",
+      "image": "/images/touristplaces/rajasthan/rajasthan2.jpeg"
+    },
+    {
+      "id": 4,
+      "title": "Uttrakhand",
+      "description": "Home to the Himalayas and spiritual retreats.",
+      "image": "/images/touristplaces/uttrakhand/uttrakhan1.jpeg"
+    }
+  ],
+
   "packages": [
     {
       "id": 1,
@@ -210,7 +239,40 @@
       "title": "Our Vision",
       "text": "We envision a future where everyone can explore the world confidently and effortlessly.",
       "image": "/images/our-vision.jpg"
-    }
+    },
+    "team": [
+      {
+        "name": "Alice Johnson",
+        "role": "Founder",
+        "image": "/images/team/businessman1.jpg"
+      },
+      {
+        "name": "Robert Smith",
+        "role": "Managing Director",
+        "image": "/images/team/businessman2.webp"
+      },
+      {
+        "name": "Maria Davis",
+        "role": "Manager",
+        "image": "/images/team/businessman4.jpeg"
+      },
+      {
+        "name": "James Lee",
+        "role": "Head of Technology",
+        "image": "/images/team/businessman3.jpeg"
+      }
+    ],
+    "gallery": [
+      { "image": "/images/gallery/gallery1.jpeg" },
+      { "image": "/images/gallery/gallery2.webp" },
+      { "image": "/images/gallery/gallery3.jpg" },
+      { "image": "/images/gallery/gallery4.jpeg" },
+      { "image": "/images/gallery/gallery5.jpg" },
+
+      { "image": "/images/gallery/gallery6.jpg" },
+      { "image": "/images/gallery/gallery7.jpeg" },
+      { "image": "/images/gallery/gallery8.jpeg" }
+    ]
   },
   "contact": {
     "title": "Contact Us",
@@ -218,14 +280,36 @@
     "backgroundImage": "/images/contact-us.jpg",
 
     "info": {
-      "email": "support@touristsite.com",
-      "phone": "+91 98765 43210",
+      "email": "namohtourism@gmail.com",
+      "phone": "+91 85806 36332",
       "address": "New Delhi, India",
       "hours": "Monday – Saturday: 9:00 AM – 6:00 PM"
     },
 
     "form": {
       "title": "Send Us a Message"
+    }
+  },
+  "footer": {
+    "companyName": "Namoh Tourism",
+    "description": "Your trusted travel partner for unforgettable journeys.",
+
+    "quickLinks": [
+      { "name": "Home", "path": "/" },
+      { "name": "Packages", "path": "/packages" },
+      { "name": "About Us", "path": "/about-us" },
+      { "name": "Contact Us", "path": "/contact-us" }
+    ],
+
+    "contact": {
+      "email": "namohtourism@gmail.com",
+      "phone": "+91 85806 36332"
+    },
+
+    "social": {
+      "instagram": "https://www.instagram.com/namoh_tourism?igsh=eXQ1bXluMDEzYzN1&utm_source=qr",
+      "facebook": "https://www.facebook.com/share/1Ai4wsVt2R/",
+      "youtube": "https://www.youtube.com"
     }
   }
 }
