@@ -280,7 +280,7 @@
     "backgroundImage": "/images/contact-us.jpg",
 
     "info": {
-      "email": "support@namohTourism.com",
+      "email": "namohtourism@gmail.com",
       "phone": "+91 85806 36332",
       "address": "New Delhi, India",
       "hours": "Monday – Saturday: 9:00 AM – 6:00 PM"
@@ -288,6 +288,28 @@
 
     "form": {
       "title": "Send Us a Message"
+    }
+  },
+  "footer": {
+    "companyName": "Namoh Tourism",
+    "description": "Your trusted travel partner for unforgettable journeys.",
+
+    "quickLinks": [
+      { "name": "Home", "path": "/" },
+      { "name": "Packages", "path": "/packages" },
+      { "name": "About Us", "path": "/about-us" },
+      { "name": "Contact Us", "path": "/contact-us" }
+    ],
+
+    "contact": {
+      "email": "namohtourism@gmail.com",
+      "phone": "+91 85806 36332"
+    },
+
+    "social": {
+      "instagram": "https://www.instagram.com/namoh_tourism?igsh=eXQ1bXluMDEzYzN1&utm_source=qr",
+      "facebook": "https://www.facebook.com/share/1Ai4wsVt2R/",
+      "youtube": "https://www.youtube.com"
     }
   }
 }

@@ -1,8 +1,95 @@
+"use client";
 import Image from "next/image";
 import content from "@/data/content.json";
 
+import { useState } from "react";
+
+import { contactSchema } from "./schema";
+import { toast } from "sonner";
+
 export default function ContactUsFeature() {
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const today = new Date().toISOString().split("T")[0];
+
   const { contact } = content;
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    destination: "",
+    persons: "",
+    message: "",
+  });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // clear error when user types
+    if (errors[e.target.name]) {
+      setErrors((prev) => {
+        const updated = { ...prev };
+        delete updated[e.target.name];
+        return updated;
+      });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const validation = contactSchema.safeParse(formData);
+
+    if (!validation.success) {
+      const fieldErrors: Record<string, string> = {};
+
+      validation.error.issues.forEach((issue) => {
+        const fieldName = issue.path[0] as string;
+        fieldErrors[fieldName] = issue.message;
+      });
+
+      setErrors(fieldErrors);
+      return;
+    }
+
+    // clear errors if valid
+    setErrors({});
+
+    try {
+      setLoading(true);
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(validation.data),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Message Sent Successfully ");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          date: "",
+          destination: "",
+          persons: "",
+          message: "",
+        });
+      } else {
+        toast.error("Something went wrong ");
+      }
+    } catch (error) {
+      toast.error("Server error ");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="relative w-full min-h-screen">
@@ -52,59 +139,167 @@ export default function ContactUsFeature() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white/20 backdrop-blur rounded-2xl p-8 text-gray-800 shadow-lg">
+          <div className="bg-white/20 backdrop-blur rounded-2xl p-8 text-gray-800 shadow-lg h-fit md:min-h-[720px]">
             <h2 className="text-2xl font-semibold mb-4 text-white">
               {contact.form.title}
             </h2>
 
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full border rounded-lg px-4 py-2"
-              />
+            <form className="space-y-3" onSubmit={handleSubmit}>
+              {/* Name */}
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  className={`w-full border rounded-lg px-4 py-2 ${
+                    errors.name ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                <p
+                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                    errors.name ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {errors.name}
+                </p>
+              </div>
 
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full border rounded-lg px-4 py-2"
-              />
+              {/* Email */}
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
+                  className={`w-full border rounded-lg px-4 py-2 ${
+                    errors.email ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                <p
+                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                    errors.email ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {errors.email}
+                </p>
+              </div>
 
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full border rounded-lg px-4 py-2"
-              />
+              {/* Phone */}
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                  className={`w-full border rounded-lg px-4 py-2 ${
+                    errors.phone ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                <p
+                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                    errors.phone ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {errors.phone}
+                </p>
+              </div>
 
-              <input
-                type="date"
-                className="w-full border rounded-lg px-4 py-2"
-              />
+              {/* Date */}
+              <div>
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  min={today}
+                  className={`w-full border rounded-lg px-4 py-2 ${
+                    errors.date ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
 
-              <input
-                type="text"
-                placeholder="Destination"
-                className="w-full border rounded-lg px-4 py-2"
-              />
+                <p
+                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                    errors.date ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {errors.date}
+                </p>
+              </div>
 
-              <input
-                type="number"
-                min="1"
-                placeholder="Number of Persons"
-                className="w-full border rounded-lg px-4 py-2"
-              />
+              {/* Destination */}
+              <div>
+                <input
+                  type="text"
+                  name="destination"
+                  value={formData.destination}
+                  onChange={handleChange}
+                  placeholder="Destination"
+                  className={`w-full border rounded-lg px-4 py-2 ${
+                    errors.destination ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                <p
+                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                    errors.destination ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {errors.destination}
+                </p>
+              </div>
 
-              <textarea
-                placeholder="Your Message"
-                rows={4}
-                className="w-full border rounded-lg px-4 py-2"
-              />
+              {/* Persons */}
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  name="persons"
+                  value={formData.persons}
+                  onChange={handleChange}
+                  placeholder="Number of Persons"
+                  className={`w-full border rounded-lg px-4 py-2 ${
+                    errors.persons ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                <p
+                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                    errors.persons ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {errors.persons}
+                </p>
+              </div>
+
+              {/* Message */}
+              <div>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Your Message"
+                  rows={4}
+                  className={`w-full border rounded-lg px-4 py-2 ${
+                    errors.message ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                <p
+                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                    errors.message ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {errors.message}
+                </p>
+              </div>
 
               <button
-                type="button"
-                className="w-full bg-[#003566] text-white py-2 rounded-lg hover:bg-[#002244] transition"
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#003566] text-white py-2 rounded-lg hover:bg-[#002244] transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
