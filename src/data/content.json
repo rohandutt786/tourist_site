@@ -40,7 +40,7 @@
       "title": "Manali Tour",
       "location": "Himachal Pradesh",
       "image": "/images/manali.jpg",
-      "price": "₹9,999",
+      "price": "",
       "description": "Enjoy the beauty of Manali",
       "facilities": {
         "meal": true,

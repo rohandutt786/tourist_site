@@ -30,7 +30,7 @@ type PackageType = {
   title: string;
   location: string;
   image: string;
-  price: string;
+  // price: string;
   description: string;
   facilities?: {
     transport?: string[];
@@ -72,9 +72,9 @@ export default function PackagesFeature() {
                 fill
                 className="object-cover"
               />
-              <Badge className="absolute top-4 right-4t bg-[#003566]">
+              {/* <Badge className="absolute top-4 right-4t bg-[#003566]">
                 {pkg.price}
-              </Badge>
+              </Badge> */}
             </div>
 
             {/* CONTENT */}
@@ -185,19 +185,39 @@ export default function PackagesFeature() {
                     </p>
 
                     {/* FACILITIES ICONS */}
-                    <div className="flex items-center gap-6 mt-3">
+                    <div className="flex items-center gap-6 mt-3 flex-wrap">
+                      {/* MEAL */}
                       {selectedPkg.facilities?.meal && (
                         <div className="flex items-center gap-2 text-orange-500">
                           <Coffee size={18} />
                           <span className="text-sm font-medium">Meal</span>
                         </div>
                       )}
+
+                      {/* HOTEL */}
                       {selectedPkg.facilities?.hotel && (
                         <div className="flex items-center gap-2 text-purple-600">
                           <HomeIcon size={18} />
                           <span className="text-sm font-medium">Hotel</span>
                         </div>
                       )}
+
+                      {/* TRANSPORT */}
+                      {selectedPkg.facilities?.transport?.length ? (
+                        <div className="flex items-center gap-2 text-blue-600">
+                          {/* Dynamic icon */}
+                          {selectedPkg.facilities.transport.includes("Cab") && (
+                            <Car size={18} />
+                          )}
+                          {selectedPkg.facilities.transport.includes(
+                            "Volvo",
+                          ) && <Bus size={18} />}
+
+                          <span className="text-sm font-medium">
+                            {selectedPkg.facilities.transport.join(" / ")}
+                          </span>
+                        </div>
+                      ) : null}
                     </div>
                   </DialogHeader>
 
@@ -291,6 +311,12 @@ export default function PackagesFeature() {
                         </div>
                       );
                     })}
+                  </div>
+                  <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-center">
+                    <p className="text-xs text-yellow-800 font-medium">
+                      Note: Tour packages can be customized according to your
+                      requirements.
+                    </p>
                   </div>
                 </>
               );
