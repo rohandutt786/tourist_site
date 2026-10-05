@@ -54,32 +54,48 @@ module.exports = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        brand: {
+          navy: "#002855",
+          "navy-dark": "#001733",
+          "navy-deep": "#000f21",
+          "navy-light": "#0a3a75",
+          gold: "#d4af37",
+          "gold-light": "#f3cb65",
+          "gold-dark": "#b8860b",
+          amber: "#f59e0b",
+        },
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
+        "pulse-subtle": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.85", transform: "scale(1.02)" },
+        },
+        shimmer: {
+          "100%": { transform: "translateX(100%)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 4s ease-in-out infinite",
+        "pulse-subtle": "pulse-subtle 3s ease-in-out infinite",
+        shimmer: "shimmer 2.5s infinite",
       },
       fontFamily: {
         sans: ["var(--font-urbanist)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"], // optional if you want monospace
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
     },
   },

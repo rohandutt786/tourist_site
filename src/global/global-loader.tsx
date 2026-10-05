@@ -41,8 +41,8 @@ export function GlobalLoader({ children }: { children: React.ReactNode }) {
       {children}
 
       {loading && (
-        <div className="fixed inset-0 bg-white/70 flex items-center justify-center z-[9999]">
-          <div className="w-10 h-10 border-4 border-[#003566] border-t-transparent rounded-full animate-spin"></div>
+        <div className="fixed inset-0 bg-white/70 backdrop-blur-xs flex items-center justify-center z-[9999]">
+          <div className="w-10 h-10 border-4 border-[#002855] border-t-[#d4af37] rounded-full animate-spin"></div>
         </div>
       )}
     </LoadingContext.Provider>

@@ -297,7 +297,7 @@ export default function ContactUsFeature() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#003566] text-white py-2 rounded-lg hover:bg-[#002244] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[#002855] text-white py-3 rounded-xl font-bold hover:bg-[#001733] border border-amber-500/30 hover:border-amber-400/80 shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>

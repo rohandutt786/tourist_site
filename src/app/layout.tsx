@@ -15,8 +15,12 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "Namoh Tourism",
-  description: "Tourism website built with Next.js",
+  title: "Namoh Tourism | Tour Packages & Travel",
+  description: "Explore the best tour packages across India with Namoh Tourism.",
+  icons: {
+    icon: "/images/namoh_emblem.svg",
+    apple: "/images/namoh_emblem.svg",
+  },
 };
 
 export default function RootLayout({
@@ -26,17 +30,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={urbanist.variable}>
-      <body className="font-sans antialiased">
+      <head>
+        <link rel="icon" href="/images/namoh_emblem.svg" type="image/svg+xml" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/namoh_emblem.svg" />
+      </head>
+      <body className="font-sans antialiased text-slate-800 bg-white">
         {/* Navbar + Sidebar handled inside client wrapper */}
         <NextTopLoader
-          color="#003566"
+          color="#002855"
           initialPosition={0.08}
           crawlSpeed={200}
           height={3}
           showSpinner={false}
           easing="ease"
           speed={200}
-          shadow="0 0 10px #2563eb, 0 0 5px #2563eb"
+          shadow="0 0 10px #d4af37, 0 0 5px #d4af37"
         />
         <NavbarClient />
         <GlobalLoader>
