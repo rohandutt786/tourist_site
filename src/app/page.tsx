@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 import HomeHero from "@/features/home/hero";
 import HomeTours from "@/features/home/tours";
-import Footer from "@/features/home/footer";
+import HomeReviews from "@/features/home/reviews";
 
 export const metadata: Metadata = {
-  title: "Tourist Site | Explore the World",
-  description: "Discover top tourist destinations and travel packages.",
+  title: "Namoh Tourism | Explore Beautiful Destinations",
+  description: "Discover top tourist destinations and travel packages with Namoh Tourism.",
 };
 
 export default function HomePage() {
@@ -13,6 +13,7 @@ export default function HomePage() {
     <main>
       <HomeHero />
       <HomeTours />
+      <HomeReviews />
     </main>
   );
 }

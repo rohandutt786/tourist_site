@@ -2,7 +2,7 @@ import PackagesFeature from "@/features/packages/packages";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tour Packages | Tourist Site",
+  title: "Tour Packages | Namoh Tourism",
   description: "Explore our best tourist packages with prices and details.",
 };
 

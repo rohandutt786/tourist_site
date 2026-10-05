@@ -2,7 +2,7 @@ import AboutUsFeature from "@/features/about-us/about";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Tourist Site",
+  title: "About Us | Namoh Tourism",
   description: "Learn more about our mission, vision, and travel platform.",
 };
 

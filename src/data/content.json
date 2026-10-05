@@ -37,11 +37,11 @@
   "packages": [
     {
       "id": 1,
-      "title": "Manali Tour",
-      "location": "Himachal Pradesh",
+      "title": "Shimla & Manali Tour",
+      "location": "Himachal Pradesh, India",
       "image": "/images/manali.jpg",
-      "price": "",
-      "description": "Enjoy the beauty of Manali",
+      "price": "₹14,999",
+      "description": "Skies are clear after the monsoon, the hills are green and the apple season is on. The classic Himachal circuit, planned by road from Delhi.",
       "facilities": {
         "meal": true,
         "hotel": true,
@@ -51,20 +51,104 @@
           "/images/touristplaces/manali/manali2.jpeg",
           "/images/touristplaces/manali/manali3.jpeg"
         ],
-        "itinerary": {
-          "Cab": [
-            "Day 01: Delhi to Manali",
-            "Day 02: Manali Local",
-            "Day 03: Manali to Solang",
-            "Day 04: Manali to Delhi Drop"
-          ],
-          "Volvo": [
-            "Day 01: Delhi to Manali (Overnight Journey by Volvo)",
-            "Day 02: Arrival + Manali Local",
-            "Day 03: Manali to Solang",
-            "Day 04: Manali to Manikaran Kasol + Drop to Volvo Stand (Overnight Journey by Volvo)"
-          ]
-        }
+        "durationPlans": [
+          {
+            "duration": "4 days / 3 nights",
+            "days": "4 days",
+            "nights": "3 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Delhi to Shimla",
+                "description": "Morning departure by cab (about 7 to 8 hours). Evening walk on the Ridge and Mall Road."
+              },
+              {
+                "day": "Day 2",
+                "title": "Shimla to Manali",
+                "description": "Quick stop at Kufri, then the scenic drive to Manali along the Beas river."
+              },
+              {
+                "day": "Day 3",
+                "title": "Manali sightseeing",
+                "description": "Hadimba Temple, Vashisht hot springs, Old Manali cafes and Mall Road. Solang Valley if time allows."
+              },
+              {
+                "day": "Day 4",
+                "title": "Manali to Delhi",
+                "description": "Early departure with an overnight return, reaching Delhi late at night."
+              }
+            ]
+          },
+          {
+            "duration": "5 days / 4 nights",
+            "days": "5 days",
+            "nights": "4 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Delhi to Shimla",
+                "description": "Morning drive from Delhi to Shimla. Evening leisure walk on the historic Mall Road and Christ Church."
+              },
+              {
+                "day": "Day 2",
+                "title": "Shimla & Kufri Excursion",
+                "description": "Visit Kufri fun campus, Himalayan Nature Park, Jakhoo Temple, and scenic viewpoint at the Ridge."
+              },
+              {
+                "day": "Day 3",
+                "title": "Shimla to Manali via Kullu",
+                "description": "Travel along picturesque river valleys with stops at Sundernagar Lake, Pandoh Dam, and river rafting in Kullu."
+              },
+              {
+                "day": "Day 4",
+                "title": "Solang Valley & Manali Local",
+                "description": "Thrilling day at Solang Valley for adventure activities, followed by Hadimba Temple and Tibetan Monastery."
+              },
+              {
+                "day": "Day 5",
+                "title": "Manali to Delhi Drop",
+                "description": "Bid farewell to the serene mountains and drive back to Delhi with unforgettable memories."
+              }
+            ]
+          },
+          {
+            "duration": "6 days / 5 nights",
+            "days": "6 days",
+            "nights": "5 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Delhi to Shimla",
+                "description": "Comfortable road journey from Delhi to Shimla. Evening stroll around Lakkar Bazaar and Scandal Point."
+              },
+              {
+                "day": "Day 2",
+                "title": "Shimla Local & Kufri Sightseeing",
+                "description": "Explore Kufri snow viewpoint, Green Valley, Vice Regal Lodge, and evening at the Ridge."
+              },
+              {
+                "day": "Day 3",
+                "title": "Shimla to Manali Scenic Drive",
+                "description": "Drive through Pandoh Dam, Hanogi Mata Temple, and Shawl weaving centers in Kullu."
+              },
+              {
+                "day": "Day 4",
+                "title": "Manali Local Sightseeing & Cafes",
+                "description": "Visit Hadimba Devi Temple, Vashisht Hot Sulphur Springs, Manu Temple, and Old Manali."
+              },
+              {
+                "day": "Day 5",
+                "title": "Solang Valley & Atal Tunnel / Sissu",
+                "description": "Exciting tour to Solang Valley and cross the iconic Atal Tunnel to visit the scenic Sissu waterfall."
+              },
+              {
+                "day": "Day 6",
+                "title": "Manali to Kasol & Delhi Return",
+                "description": "Visit Parvati Valley, Kasol, and Manikaran Gurudwara before heading back to Delhi."
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -73,39 +157,123 @@
       "location": "Jammu & Kashmir, India",
       "price": "₹22,499",
       "image": "/images/j&k.jpeg",
-      "description": "Experience breathtaking landscapes, lakes, and mountains in Jammu & Kashmir.",
+      "description": "Autumn light on the chinar trees, crisp air and clear mountain views. Trips start and end at Srinagar. Flights or trains to reach Kashmir can be arranged on request.",
       "facilities": {
         "meal": true,
         "hotel": true,
         "transport": ["Cab", "Volvo"],
-        "tourImages": ["/images/touristplaces/jammukashmir/j&k2.jpeg"],
-        "itinerary": {
-          "Cab": [
-            "Day 01: Arrival at Srinagar + Houseboat Stay",
-            "Day 02: Srinagar Local",
-            "Day 03: Srinagar to Sonmarg",
-            "Day 04: Srinagar to Gulmarg",
-            "Day 05: Srinagar to Pahalgam",
-            "Day 06: Pahalgam to Srinagar Drop"
-          ],
-          "Volvo": [
-            "Day 01: Delhi to Srinagar (Overnight Journey by Volvo)",
-            "Day 02: Arrival + Srinagar Local",
-            "Day 03: Srinagar to Sonmarg",
-            "Day 04: Srinagar to Gulmarg",
-            "Day 05: Srinagar to Pahalgam",
-            "Day 06: Pahalgam to Srinagar + Drop to Volvo Stand (Overnight Journey by Volvo)"
-          ]
-        }
+        "tourImages": [
+          "/images/touristplaces/jammukashmir/j&k2.jpeg",
+          "/images/touristplaces/jammukashmir/Sonmarg.jpeg",
+          "/images/touristplaces/jammukashmir/gulmarg.jpeg"
+        ],
+        "durationPlans": [
+          {
+            "duration": "4 days / 3 nights",
+            "days": "4 days",
+            "nights": "3 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Arrive Srinagar",
+                "description": "Pickup and transfer to your hotel. Shikara ride on Dal Lake and the Mughal Gardens at sunset."
+              },
+              {
+                "day": "Day 2",
+                "title": "Gulmarg day trip",
+                "description": "Drive to Gulmarg (about 2 hours), Gondola ride and meadow walks. Return to Srinagar."
+              },
+              {
+                "day": "Day 3",
+                "title": "Srinagar to Pahalgam",
+                "description": "Drive to Pahalgam (about 3 hours). Betaab Valley and Aru Valley on the way."
+              },
+              {
+                "day": "Day 4",
+                "title": "Pahalgam to Srinagar",
+                "description": "Return to Srinagar and drop at the airport or railway station."
+              }
+            ]
+          },
+          {
+            "duration": "5 days / 4 nights",
+            "days": "5 days",
+            "nights": "4 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Arrive Srinagar",
+                "description": "Pickup, hotel check-in, Shikara ride on Dal Lake and the Mughal Gardens."
+              },
+              {
+                "day": "Day 2",
+                "title": "Gulmarg day trip",
+                "description": "Gondola ride and meadow walks at Gulmarg. Return to Srinagar."
+              },
+              {
+                "day": "Day 3",
+                "title": "Srinagar to Pahalgam",
+                "description": "Drive to Pahalgam with stops at Awantipora ruins and saffron fields."
+              },
+              {
+                "day": "Day 4",
+                "title": "Pahalgam to Srinagar",
+                "description": "Betaab Valley, Aru Valley and Chandanwari, then back to Srinagar for shawl and dry fruit shopping."
+              },
+              {
+                "day": "Day 5",
+                "title": "Departure",
+                "description": "Drop at Srinagar airport or railway station."
+              }
+            ]
+          },
+          {
+            "duration": "6 days / 5 nights",
+            "days": "6 days",
+            "nights": "5 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Arrive Srinagar",
+                "description": "Pickup, hotel check-in, Shikara ride on Dal Lake and the Mughal Gardens."
+              },
+              {
+                "day": "Day 2",
+                "title": "Gulmarg day trip",
+                "description": "Gondola ride and meadow walks at Gulmarg. Return to Srinagar."
+              },
+              {
+                "day": "Day 3",
+                "title": "Sonamarg day trip",
+                "description": "Drive along the Sindh river to Sonamarg (about 2.5 hours) and Thajiwas Glacier. Return to Srinagar."
+              },
+              {
+                "day": "Day 4",
+                "title": "Srinagar to Pahalgam",
+                "description": "Drive to Pahalgam, stopping at Awantipora ruins on the way."
+              },
+              {
+                "day": "Day 5",
+                "title": "Pahalgam to Srinagar",
+                "description": "Betaab Valley, Aru Valley and Chandanwari, then back to Srinagar."
+              },
+              {
+                "day": "Day 6",
+                "title": "Departure",
+                "description": "Drop at Srinagar airport or railway station."
+              }
+            ]
+          }
+        ]
       }
     },
     {
       "id": 3,
-      "title": "Rajasthan Tour",
+      "title": "Rajasthan Heritage Tour",
       "location": "Rajasthan, India",
       "price": "₹15,999",
       "image": "/images/jaipur.jpg",
-      "description": "Discover royal palaces, forts, and the vibrant culture of Rajasthan.",
+      "description": "Discover grand royal palaces, invincible hilltop forts, desert safaris, and the colorful vibrant culture of Rajasthan.",
       "facilities": {
         "meal": true,
         "hotel": true,
@@ -116,54 +284,104 @@
           "/images/touristplaces/rajasthan/rajasthan3.jpeg",
           "/images/touristplaces/rajasthan/rajasthan4.jpeg"
         ],
-        "itinerary": {
-          "Jaipur": {
-            "Cab": [
-              "Day 01: Arrival at Jaipur",
-              "Day 02: Jaipur Local",
-              "Day 03: Jaipur To Khatu Shyam + Salasar Balaji",
-              "Day 04: Departure"
-            ],
-            "Volvo": [
-              "Day 01: Delhi to Jaipur (Overnight Journey by Volvo)",
-              "Day 02: Jaipur Local",
-              "Day 03: Jaipur To Khatu Shyam + Salasar Balaji",
-              "Day 04: Departure"
+        "durationPlans": [
+          {
+            "duration": "4 days / 3 nights",
+            "days": "4 days",
+            "nights": "3 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Arrival at Jaipur (Pink City)",
+                "description": "Pick up from airport/railway station. Visit Birla Temple, Albert Hall Museum, and explore colorful local bazaars."
+              },
+              {
+                "day": "Day 2",
+                "title": "Jaipur Forts & Palaces",
+                "description": "Full day tour: majestic Amber Fort, Jal Mahal photo stop, City Palace, and the iconic Hawa Mahal."
+              },
+              {
+                "day": "Day 3",
+                "title": "Jaipur to Khatu Shyam & Salasar Balaji",
+                "description": "Spiritual day trip to the revered Khatu Shyam Ji temple and Salasar Balaji Dham."
+              },
+              {
+                "day": "Day 4",
+                "title": "Jaipur Departure",
+                "description": "Last minute shopping for authentic handicrafts and textiles before drop at airport or railway station."
+              }
             ]
           },
-          "Udaipur": {
-            "Cab": [
-              "Day 01: Arrival at Udaipur",
-              "Day 02: Udaipur Local",
-              "Day 03: Udaipur to Kumbhalgarh",
-              "Day 04: Udaipur to Chitthorgarh",
-              "Day 05: Departure"
-            ],
-            "Volvo": [
-              "Day 01: Delhi to Udaipur (Overnight Journey by Volvo)",
-              "Day 02: Udaipur Local",
-              "Day 03: Udaipur to Kumbhalgarh",
-              "Day 04: Udaipur to Chitthorgarh",
-              "Day 05: Departure"
+          {
+            "duration": "5 days / 4 nights",
+            "days": "5 days",
+            "nights": "4 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Arrival at Udaipur (City of Lakes)",
+                "description": "Arrive in Udaipur, check in and enjoy a relaxing sunset boat ride on Lake Pichola with view of Jag Mandir."
+              },
+              {
+                "day": "Day 2",
+                "title": "Udaipur City Palace & Saheliyon-ki-Bari",
+                "description": "Tour the grand City Palace, Jagdish Temple, Saheliyon-ki-Bari gardens, and Bagore Ki Haveli folk dance."
+              },
+              {
+                "day": "Day 3",
+                "title": "Udaipur to Kumbhalgarh Fort",
+                "description": "Excursion to the legendary Kumbhalgarh Fort boasting the world's second-longest continuous wall."
+              },
+              {
+                "day": "Day 4",
+                "title": "Udaipur to Chittorgarh Fort",
+                "description": "Day trip to the historic Chittorgarh Fort, Vijay Stambha, and Rani Padmini Palace."
+              },
+              {
+                "day": "Day 5",
+                "title": "Departure from Udaipur",
+                "description": "Morning leisure by Fateh Sagar Lake and transfer to Udaipur Airport / Railway station."
+              }
             ]
           },
-          "Jodhpur": {
-            "Cab": [
-              "Day 01: Arrival at Jodhpur",
-              "Day 02: Jodhpur Local Sightseeing",
-              "Day 03: Jodhpur to Jaisalmer",
-              "Day 04: Jaisalmer Local + Camp stay",
-              "Day 05: Jaisalmer Drop"
-            ],
-            "Volvo": [
-              "Day 01: Delhi to Jodhpur (Overnight Journey by Volvo)",
-              "Day 02: Jodhpur Local Sightseeing",
-              "Day 03: Jodhpur to Jaisalmer",
-              "Day 04: Jaisalmer Local + Camp stay",
-              "Day 05: Jaisalmer Drop"
+          {
+            "duration": "6 days / 5 nights",
+            "days": "6 days",
+            "nights": "5 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Arrival in Jodhpur (Blue City)",
+                "description": "Arrive in Jodhpur. Visit the imposing Mehrangarh Fort, Jaswant Thada, and Umaid Bhawan Palace museum."
+              },
+              {
+                "day": "Day 2",
+                "title": "Jodhpur to Jaisalmer (Golden City)",
+                "description": "Scenic highway drive to Jaisalmer across the Thar Desert. Evening visit to Gadisar Lake."
+              },
+              {
+                "day": "Day 3",
+                "title": "Jaisalmer Fort & Patwon Ki Haveli",
+                "description": "Explore the living Golden Fort (Sonar Qila), Salim Singh Ki Haveli, and intricately carved Jain temples."
+              },
+              {
+                "day": "Day 4",
+                "title": "Sam Sand Dunes & Desert Camp Stay",
+                "description": "Drive to Sam Sand Dunes. Experience thrilling camel safari, desert jeep safari, Rajasthani folk music, and camp under the stars."
+              },
+              {
+                "day": "Day 5",
+                "title": "Kuldhara Ghost Village & Jodhpur Return",
+                "description": "Visit the haunted ruins of Kuldhara village and return to Jodhpur for overnight stay."
+              },
+              {
+                "day": "Day 6",
+                "title": "Jodhpur Departure",
+                "description": "Check out and drop at Jodhpur Airport / Railway station with unforgettable desert memories."
+              }
             ]
           }
-        }
+        ]
       }
     },
     {
@@ -172,12 +390,11 @@
       "location": "Uttarakhand, India",
       "price": "₹18,499",
       "image": "/images/uttrakhand.jpeg",
-      "description": "Explore serene mountains, rivers, wildlife and spiritual destinations of Uttarakhand.",
+      "description": "Explore serene mountains, rushing rivers, wildlife safaris, and spiritual retreats across the divine Himalayas.",
       "facilities": {
         "meal": true,
         "hotel": true,
         "transport": ["Cab", "Volvo"],
-
         "tourImages": [
           "/images/touristplaces/uttrakhand/uttrakhan1.jpeg",
           "/images/touristplaces/uttrakhand/uttrakhand2.jpeg",
@@ -185,44 +402,82 @@
           "/images/touristplaces/uttrakhand/uttrakhand4.jpeg",
           "/images/touristplaces/uttrakhand/uttrakhand5.jpeg"
         ],
-        "itinerary": {
-          "Mussoorie–Nainital": {
-            "Cab": [
-              "Day 01: Delhi to Mussoorie",
-              "Day 02: Mussoorie Local Sightseeing",
-              "Day 03: Mussoorie to Haridwar via Rishikesh",
-              "Day 04: Haridwar to Jim Corbett",
-              "Day 05: Jim Corbett to Nainital",
-              "Day 06: Nainital Local Sightseeing",
-              "Day 07: Nainital to Delhi Drop"
-            ],
-            "Volvo": [
-              "Day 01: Delhi to Mussoorie",
-              "Day 02: Mussoorie Local Sightseeing",
-              "Day 03: Mussoorie to Haridwar via Rishikesh",
-              "Day 04: Haridwar to Jim Corbett",
-              "Day 05: Jim Corbett to Nainital",
-              "Day 06: Nainital Local Sightseeing",
-              "Day 07: Nainital to Delhi Drop"
+        "durationPlans": [
+          {
+            "duration": "5 days / 4 nights",
+            "days": "5 days",
+            "nights": "4 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Haridwar / Rishikesh to Chopta",
+                "description": "Scenic drive through Devprayag (confluence of Alaknanda & Bhagirathi) to Chopta, the 'Mini Switzerland of India'."
+              },
+              {
+                "day": "Day 2",
+                "title": "Tungnath & Chandrashila Peak Trek",
+                "description": "Trek to Tungnath (world highest Shiva temple) and summit Chandrashila for 360-degree Himalayan views."
+              },
+              {
+                "day": "Day 3",
+                "title": "Chopta to Joshimath",
+                "description": "Picturesque drive to Joshimath via Ukhimath and Chamoli along the Alaknanda valley."
+              },
+              {
+                "day": "Day 4",
+                "title": "Joshimath to Auli Snow Excursion",
+                "description": "Take Asia longest ropeway to Auli skiing meadows, artificial lake, and view of Nanda Devi peak."
+              },
+              {
+                "day": "Day 5",
+                "title": "Joshimath to Haridwar / Rishikesh Drop",
+                "description": "Return drive with drop at Haridwar / Rishikesh railway station or bus terminal."
+              }
             ]
           },
-          "Chopta–Auli Adventure": {
-            "Cab": [
-              "Day 01: Haridwar to Chopta",
-              "Day 02: Chopta to Tungnath & Chandrashila Trek",
-              "Day 03: Chopta to Joshimath",
-              "Day 04: Joshimath to Auli & back to Joshimath",
-              "Day 05: Joshimath to Haridwar Drop"
-            ],
-            "Volvo": [
-              "Day 01: Haridwar to Chopta",
-              "Day 02: Chopta to Tungnath & Chandrashila Trek",
-              "Day 03: Chopta to Joshimath",
-              "Day 04: Joshimath to Auli & back to Joshimath",
-              "Day 05: Joshimath to Haridwar Drop"
+          {
+            "duration": "7 days / 6 nights",
+            "days": "7 days",
+            "nights": "6 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Delhi to Mussoorie",
+                "description": "Morning drive to Queen of Hills, Mussoorie. Evening walk on Mall Road and Camel Back Road."
+              },
+              {
+                "day": "Day 2",
+                "title": "Mussoorie Local Sightseeing",
+                "description": "Visit Kempty Falls, Gun Hill ropeway, Company Garden, and George Everest House."
+              },
+              {
+                "day": "Day 3",
+                "title": "Mussoorie to Rishikesh / Haridwar",
+                "description": "Drive down to Rishikesh. Visit Ram Jhula, Laxman Jhula, and attend Ganga Aarti at Triveni Ghat."
+              },
+              {
+                "day": "Day 4",
+                "title": "Haridwar to Jim Corbett National Park",
+                "description": "Drive to Jim Corbett. Check-in to forest resort and enjoy evening nature walk along Kosi River."
+              },
+              {
+                "day": "Day 5",
+                "title": "Corbett Jungle Safari to Nainital",
+                "description": "Early morning 4x4 Jeep Safari inside Corbett National Park, then scenic drive up to Nainital."
+              },
+              {
+                "day": "Day 6",
+                "title": "Nainital Lake Tour & Sightseeing",
+                "description": "Boating on Naini Lake, visit Naina Devi Temple, Snow View Point, and Bhimtal / Sattal lakes."
+              },
+              {
+                "day": "Day 7",
+                "title": "Nainital to Delhi Drop",
+                "description": "Drive back to Delhi with unforgettable memories of Uttarakhand."
+              }
             ]
           }
-        }
+        ]
       }
     }
   ],
@@ -290,6 +545,44 @@
       "title": "Send Us a Message"
     }
   },
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Dr. Rohit & Neha Verma",
+      "location": "New Delhi",
+      "tour": "Kashmir Paradise (5D/4N)",
+      "rating": 5,
+      "date": "March 2026",
+      "comment": "Namoh Tourism made our Kashmir honeymoon truly special. Dal Lake houseboat was cozy and Gulmarg snow views were incredible. The driver Farooq was courteous and punctual throughout. Highly recommended!"
+    },
+    {
+      "id": 2,
+      "name": "Vikramaditya Singhania & Family",
+      "location": "Mumbai",
+      "tour": "Shimla & Manali Circuit",
+      "rating": 4,
+      "date": "February 2026",
+      "comment": "Traveled with elderly parents. The hotel in Manali had amazing river view and private cab was clean. Had some traffic near Solang valley, but the driver managed the route calmly. Overall good arrangements."
+    },
+    {
+      "id": 3,
+      "name": "Pooja & Ankit Deshmukh",
+      "location": "Pune",
+      "tour": "Royal Rajasthan Heritage",
+      "rating": 5,
+      "date": "January 2026",
+      "comment": "Superb arrangements in Jaipur & Udaipur. The palace hotel booking and private Innova cab were top notch. Transparent pricing with zero hidden charges. Will definitely book our next trip with Namoh!"
+    },
+    {
+      "id": 4,
+      "name": "Sunita & Rajesh Aggarwal",
+      "location": "Chandigarh",
+      "tour": "Uttarakhand Serene Retreat",
+      "rating": 4,
+      "date": "February 2026",
+      "comment": "Very well organized trip to Nainital and Jim Corbett. The hotel view was scenic, food was fresh and driver was very skilled in mountain roads. Hotel check-in had slight delay on weekend, but team handled it well."
+    }
+  ],
   "footer": {
     "companyName": "Namoh Tourism",
     "description": "Your trusted travel partner for unforgettable journeys.",

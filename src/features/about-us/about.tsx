@@ -22,7 +22,7 @@ export default function AboutUsFeature() {
     <section className="max-w-7xl mx-auto px-6 py-20">
       {/* Header */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#003566]">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#002855]">
           {about.title}
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -48,7 +48,7 @@ export default function AboutUsFeature() {
             />
           </div>
           <div className="p-6">
-            <h2 className="text-2xl font-semibold mb-3 text-[#003566]">
+            <h2 className="text-2xl font-semibold mb-3 text-[#002855]">
               {about.mission.title}
             </h2>
             <p className="text-gray-600">{about.mission.text}</p>
@@ -66,7 +66,7 @@ export default function AboutUsFeature() {
             />
           </div>
           <div className="p-6">
-            <h2 className="text-2xl font-semibold mb-3 text-[#003566]">
+            <h2 className="text-2xl font-semibold mb-3 text-[#002855]">
               {about.vision.title}
             </h2>
             <p className="text-gray-600">{about.vision.text}</p>
@@ -76,7 +76,7 @@ export default function AboutUsFeature() {
 
       {/* Team Section */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-6 text-[#003566]">Our Team</h2>
+        <h2 className="text-4xl font-bold mb-6 text-[#002855]">Our Team</h2>
         <p className="text-gray-600 max-w-3xl mx-auto">
           Meet the people who make our mission possible
         </p>
@@ -93,10 +93,10 @@ export default function AboutUsFeature() {
                 src={member.image}
                 alt={member.name}
                 fill
-                className="object-cover rounded-full border-4 border-[#003566]"
+                className="object-cover rounded-full border-4 border-[#002855]"
               />
             </div>
-            <h3 className="text-xl font-semibold mb-1 text-center text-[#003566]">
+            <h3 className="text-xl font-semibold mb-1 text-center text-[#002855]">
               {member.name}
             </h3>
             <p className="text-gray-500 text-sm text-center">{member.role}</p>
@@ -109,7 +109,7 @@ export default function AboutUsFeature() {
       {gallery && gallery.length > 0 && (
         <div className="mb-20 relative">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-6 text-[#003566]">Gallery</h2>
+            <h2 className="text-4xl font-bold mb-6 text-[#002855]">Gallery</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               A glimpse of our journeys and adventures
             </p>
@@ -121,14 +121,14 @@ export default function AboutUsFeature() {
             ref={prevRef}
             className="absolute left-0  top-[70%] -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 flex items-center justify-center"
           >
-            <ChevronLeft className="w-6 h-6 text-[#003566]" />
+            <ChevronLeft className="w-6 h-6 text-[#002855]" />
           </button>
 
           <button
             ref={nextRef}
             className="absolute right-0 top-[70%] -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 flex items-center justify-center"
           >
-            <ChevronRight className="w-6 h-6 text-[#003566]" />
+            <ChevronRight className="w-6 h-6 text-[#002855]" />
           </button>
 
           <Swiper
