@@ -31,6 +31,12 @@
       "title": "Uttrakhand",
       "description": "Home to the Himalayas and spiritual retreats.",
       "image": "/images/touristplaces/uttrakhand/uttrakhan1.jpeg"
+    },
+    {
+      "id": 5,
+      "title": "Kerala",
+      "description": "God's Own Country with serene backwaters, tea gardens, and beaches.",
+      "image": "/images/touristplaces/kerala/kerala1.jpg"
     }
   ],
 
@@ -479,6 +485,68 @@
           }
         ]
       }
+    },
+    {
+      "id": 5,
+      "title": "Kerala Backwaters & Munnar Hills Tour",
+      "location": "Kerala, India",
+      "price": "₹19,999",
+      "image": "/images/touristplaces/kerala/kerala1.jpg",
+      "description": "Experience God's Own Country with serene Alleppey houseboat stays, emerald Munnar tea hills, wildlife in Thekkady, and golden sunsets at Kovalam beach.",
+      "facilities": {
+        "meal": true,
+        "hotel": true,
+        "transport": ["Cab", "Volvo"],
+        "tourImages": [
+          "/images/touristplaces/kerala/kerala1.jpg",
+          "/images/touristplaces/kerala/kerala2.jpg",
+          "/images/touristplaces/kerala/kerala3.jpg"
+        ],
+        "durationPlans": [
+          {
+            "duration": "7 days / 6 nights",
+            "days": "7 days",
+            "nights": "6 nights",
+            "itinerary": [
+              {
+                "day": "Day 1",
+                "title": "Cochin to Munnar",
+                "description": "Pickup from Cochin. Scenic road journey to Munnar passing Cheeyappara and Valara waterfalls amidst lush tea gardens."
+              },
+              {
+                "day": "Day 2",
+                "title": "Munnar Local Sightseeing",
+                "description": "Full day tour: Eravikulam National Park (Nilgiri Tahr), Mattupetty Dam, Echo Point, Tea Museum, and spice gardens."
+              },
+              {
+                "day": "Day 3",
+                "title": "Munnar to Thekkady",
+                "description": "Scenic mountain drive to Thekkady. Visit Periyar Wildlife Sanctuary, spice plantation tour, and cultural Kathakali show."
+              },
+              {
+                "day": "Day 4",
+                "title": "Thekkady to Kovalam",
+                "description": "Travel from the misty hills to the sun-kissed beaches of Kovalam. Evening relaxing by the Arabian Sea."
+              },
+              {
+                "day": "Day 5",
+                "title": "Kovalam to Trivandrum Sightseeing",
+                "description": "Visit historic Padmanabhaswamy Temple, Napier Museum, and enjoy sunset at Kovalam Lighthouse Beach."
+              },
+              {
+                "day": "Day 6",
+                "title": "Kovalam to Alleppey Houseboat Stay",
+                "description": "Drive to Alleppey and check into a traditional luxury houseboat. Cruise through peaceful backwaters with an authentic Kerala dinner and overnight stay."
+              },
+              {
+                "day": "Day 7",
+                "title": "Alleppey to Cochin Drop",
+                "description": "Enjoy breakfast amidst the serene backwaters, check out and drive back to Cochin for drop at Airport or Railway Station."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "about": {
@@ -497,24 +565,19 @@
     },
     "team": [
       {
-        "name": "Alice Johnson",
+        "name": "Mahesh Chand Gupta",
         "role": "Founder",
-        "image": "/images/team/businessman1.jpg"
+        "image": "/images/team/Founder.png"
       },
       {
-        "name": "Robert Smith",
+        "name": "Abhishek Gupta",
         "role": "Managing Director",
-        "image": "/images/team/businessman2.webp"
+        "image": "/images/team/Managing Director.png"
       },
       {
-        "name": "Maria Davis",
-        "role": "Manager",
-        "image": "/images/team/businessman4.jpeg"
-      },
-      {
-        "name": "James Lee",
-        "role": "Head of Technology",
-        "image": "/images/team/businessman3.jpeg"
+        "name": "Kirti",
+        "role": "Director",
+        "image": "/images/team/Manager.png"
       }
     ],
     "gallery": [

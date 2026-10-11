@@ -82,24 +82,26 @@ export default function AboutUsFeature() {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto gap-8 mb-20">
         {team.map((member, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center p-6"
+            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col items-center p-6 border border-slate-100 group hover:-translate-y-1"
           >
-            <div className="relative w-36 h-36 mb-4">
+            <div className="relative w-48 h-56 mb-4 rounded-2xl overflow-hidden shadow-md group-hover:scale-105 transition-transform duration-300 border-2 border-amber-500/20 bg-slate-100">
               <Image
                 src={member.image}
-                alt={member.name}
+                alt={member.role}
                 fill
-                className="object-cover rounded-full border-4 border-[#002855]"
+                className="object-cover object-top"
               />
             </div>
-            <h3 className="text-xl font-semibold mb-1 text-center text-[#002855]">
+            <h3 className="text-xl font-bold mb-1 text-center text-[#002855]">
               {member.name}
             </h3>
-            <p className="text-gray-500 text-sm text-center">{member.role}</p>
+            <p className="text-[#d4af37] font-semibold text-xs tracking-wider uppercase text-center">
+              {member.role}
+            </p>
           </div>
         ))}
       </div>

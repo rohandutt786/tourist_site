@@ -38,24 +38,32 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
       >
         <div>
           {/* Header */}
-          <div className="p-5 flex items-center justify-between border-b border-slate-100">
+          <div className="p-4 sm:p-5 flex items-center justify-between border-b border-[#003875] bg-[#002855]">
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="flex items-center select-none"
+              className="flex items-center gap-2 select-none"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/namoh_tourism_navy.svg"
                 alt="Namoh Tourism Logo"
-                width={120}
-                height={55}
-                className="h-12 sm:h-14 w-auto object-contain"
+                width={140}
+                height={70}
+                className="h-14 sm:h-16 w-auto object-contain"
               />
+              <div className="flex flex-col justify-center">
+                <span className="text-base font-black tracking-tight text-white leading-none font-sans">
+                  Namoh <span className="text-[#d4af37]">Tourism</span>
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.2em] font-semibold text-slate-300 mt-0.5">
+                  Explore India
+                </span>
+              </div>
             </Link>
             <button
               onClick={() => setIsOpen(false)}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center cursor-pointer transition-colors"
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center cursor-pointer transition-colors"
               aria-label="Close menu"
             >
               ✕
