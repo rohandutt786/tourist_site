@@ -584,17 +584,35 @@
   ],
   "about": {
     "title": "About Us",
-    "subtitle": "We help travelers discover beautiful destinations and create unforgettable journeys.",
+    "subtitle": "Discover our passion for authentic hospitality and handcrafted holiday packages across Incredible India.",
     "image": "/images/our-team.jpg",
+    "story": {
+      "title": "Crafting Dream Vacations with Authentic Care",
+      "text": "Born in the heart of the Himalayas, Namoh Tourism was founded with a singular conviction: travel should be soulful, transparent, and completely worry-free. Over the years, we have grown from local Himachal specialists to one of North India's most dependable holiday planners, curating bespoke tours across Himachal Pradesh, Kashmir, Uttarakhand, Rajasthan, Kerala, and beyond.",
+      "subtext": "We personally inspect our partner hotels, handpick well-mannered mountain chauffeurs, and design itineraries that leave ample room for genuine discovery rather than rushed sightseeing.",
+      "quote": "Travel isn't just about reaching a destination; it's about feeling welcomed with genuine warmth and returning home with memories for a lifetime."
+    },
     "mission": {
       "title": "Our Mission",
-      "text": "Our mission is to simplify travel planning by providing reliable information and curated destinations for travelers worldwide.",
-      "image": "/images/our-mission.jpg"
+      "tagline": "Personalized Itineraries & Honest Hospitality",
+      "text": "Our mission is to simplify travel planning by delivering handpicked, custom holiday packages that prioritize comfort, safety, and authentic local experiences. We take care of every detail — verified hotels, skilled local drivers, and tailored itineraries — with zero hidden charges so you can travel with complete peace of mind.",
+      "image": "/images/our-mission.jpg",
+      "points": [
+        "100% Tailor-made itineraries planned around your family's pace and budget.",
+        "Zero hidden costs with complete transparency in stays, transport, and sightseeing.",
+        "Dedicated 24/7 on-trip assistance from departure to safe return."
+      ]
     },
     "vision": {
       "title": "Our Vision",
-      "text": "We envision a future where everyone can explore the world confidently and effortlessly.",
-      "image": "/images/our-vision.jpg"
+      "tagline": "To Be India's Most Trusted Holiday Specialist",
+      "text": "We envision becoming India's most loved travel partner, known for creating meaningful, joy-filled journeys that leave lasting memories. We strive to connect travelers with the natural beauty and culture of India while supporting local mountain drivers and responsible regional tourism.",
+      "image": "/images/our-vision.jpg",
+      "points": [
+        "Setting high benchmarks in guest satisfaction, safety, and personalized care.",
+        "Promoting responsible tourism that supports local communities and drivers.",
+        "Curating authentic, memorable holiday circuits across all of India."
+      ]
     },
     "team": [
       {
@@ -647,7 +665,7 @@
     "info": {
       "email": "namohtourism@gmail.com",
       "phone": "+91 85806 36332",
-      "address": "Prasad Bhawan , Khalini , Distt. Shimla, H.P.171002",
+      "address": "Prasad Bhawan, Khalini, Distt. Shimla, H.P. - 171002",
       "hours": "Monday – Saturday: 9:00 AM – 6:00 PM"
     },
     "form": {
@@ -716,7 +734,7 @@
     "contact": {
       "email": "namohtourism@gmail.com",
       "phone": "+91 85806 36332",
-      "address": "Prasad Bhawan , Khalini , Distt. Shimla, H.P.171002"
+      "address": "Prasad Bhawan, Khalini, Distt. Shimla, H.P. - 171002"
     },
     "social": {
       "instagram": "https://www.instagram.com/namoh_tourism?igsh=eXQ1bXluMDEzYzN1&utm_source=qr",

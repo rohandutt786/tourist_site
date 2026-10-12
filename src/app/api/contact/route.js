@@ -1,9 +1,23 @@
 import nodemailer from "nodemailer";
 import { renderTemplate } from "@/nodemailer/template.service";
+import { contactSchema } from "@/features/contact-us/schema";
 
 export async function POST(req) {
   try {
-    const body = await req.json();
+    const rawBody = await req.json();
+    const validation = contactSchema.safeParse(rawBody);
+
+    if (!validation.success) {
+      return Response.json(
+        {
+          success: false,
+          message: "Please fill all required fields correctly.",
+          errors: validation.error.flatten().fieldErrors,
+        },
+        { status: 400 }
+      );
+    }
+
     const {
       name,
       email,
@@ -15,7 +29,7 @@ export async function POST(req) {
       persons,
       budget,
       message,
-    } = body;
+    } = validation.data;
 
     const adminEmail = process.env.ADMIN_EMAIL || "namohtourism@gmail.com";
     const adminPass = process.env.ADMIN_EMAIL_PASS;

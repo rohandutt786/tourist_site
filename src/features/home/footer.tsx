@@ -90,7 +90,7 @@ export default function Footer() {
 
             <li className="flex items-center gap-2.5">
               <MapPin size={16} className="text-[#d4af37] flex-shrink-0" />
-              <span className="text-slate-400">Prasad Bhawan , Khalini , Distt. Shimla, H.P.171002</span>
+              <span className="text-slate-400">{footer.contact.address}</span>
             </li>
           </ul>
         </div>

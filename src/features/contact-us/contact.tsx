@@ -47,6 +47,54 @@ export default function ContactUsFeature() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+
+    // Strict input filtering for phone: only digits and leading '+'
+    if (name === "phone") {
+      let cleaned = value.replace(/[^\d+]/g, "");
+      if (cleaned.includes("+")) {
+        cleaned = (cleaned.startsWith("+") ? "+" : "") + cleaned.replace(/\+/g, "");
+      }
+      if (cleaned.length > 15) return;
+      setFormData((prev) => ({ ...prev, phone: cleaned }));
+      if (errors.phone) {
+        setErrors((prev) => {
+          const updated = { ...prev };
+          delete updated.phone;
+          return updated;
+        });
+      }
+      return;
+    }
+
+    // Strict input filtering for numeric counter fields (days, persons)
+    if (name === "days" || name === "persons") {
+      const cleaned = value.replace(/\D/g, "");
+      if (cleaned.length > 3) return;
+      setFormData((prev) => ({ ...prev, [name]: cleaned }));
+      if (errors[name]) {
+        setErrors((prev) => {
+          const updated = { ...prev };
+          delete updated[name];
+          return updated;
+        });
+      }
+      return;
+    }
+
+    // Email input filtering: disallow spaces
+    if (name === "email") {
+      const cleaned = value.replace(/\s/g, "");
+      setFormData((prev) => ({ ...prev, email: cleaned }));
+      if (errors.email) {
+        setErrors((prev) => {
+          const updated = { ...prev };
+          delete updated.email;
+          return updated;
+        });
+      }
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // clear error when user types
@@ -69,7 +117,10 @@ export default function ContactUsFeature() {
 
       validation.error.issues.forEach((issue) => {
         const fieldName = issue.path[0] as string;
-        fieldErrors[fieldName] = issue.message;
+        // Keep the first error for each field so "Please enter..." is prioritized
+        if (!fieldErrors[fieldName]) {
+          fieldErrors[fieldName] = issue.message;
+        }
       });
 
       setErrors(fieldErrors);
@@ -199,7 +250,7 @@ export default function ContactUsFeature() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Your Email"
+                    placeholder="Email (e.g. name@gmail.com)"
                     className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
                       errors.email ? "border-red-500" : "border-gray-300"
                     }`}
@@ -222,7 +273,8 @@ export default function ContactUsFeature() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="Phone Number"
+                    placeholder="Phone (e.g. +91 9876543210)"
+                    maxLength={15}
                     className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
                       errors.phone ? "border-red-500" : "border-gray-300"
                     }`}
@@ -304,12 +356,13 @@ export default function ContactUsFeature() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <input
-                    type="number"
-                    min="1"
+                    type="text"
+                    inputMode="numeric"
                     name="days"
                     value={formData.days}
                     onChange={handleChange}
                     placeholder="Days (e.g. 5)"
+                    maxLength={3}
                     className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
                       errors.days ? "border-red-500" : "border-gray-300"
                     }`}
@@ -325,12 +378,13 @@ export default function ContactUsFeature() {
 
                 <div>
                   <input
-                    type="number"
-                    min="1"
+                    type="text"
+                    inputMode="numeric"
                     name="persons"
                     value={formData.persons}
                     onChange={handleChange}
-                    placeholder="Persons"
+                    placeholder="Persons (e.g. 2)"
+                    maxLength={3}
                     className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
                       errors.persons ? "border-red-500" : "border-gray-300"
                     }`}
@@ -350,7 +404,8 @@ export default function ContactUsFeature() {
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    placeholder="Budget (₹)"
+                    placeholder="Budget (e.g. ₹25,000)"
+                    maxLength={30}
                     className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
                       errors.budget ? "border-red-500" : "border-gray-300"
                     }`}
