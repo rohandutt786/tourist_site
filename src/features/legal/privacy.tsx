@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
                 <strong>Contact Information:</strong> Full name, email address, mobile/WhatsApp number, and residential city.
               </li>
               <li>
-                <strong>Travel Preferences:</strong> Preferred travel dates, destination choices (Himachal, Kashmir, Rajasthan, Uttarakhand), number of adults/children, and room preferences.
+                <strong>Travel Preferences:</strong> Preferred travel dates, destination choices (destinations across India), number of adults/children, and room preferences.
               </li>
               <li>
                 <strong>Identity Records:</strong> Government-issued ID details (Aadhaar or Passport) required solely for hotel registration and local permits.

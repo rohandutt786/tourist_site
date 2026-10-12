@@ -1,99 +1,117 @@
 import nodemailer from "nodemailer";
+import { renderTemplate } from "@/nodemailer/template.service";
 
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, phone, date, destination, persons, message } = body;
+    const {
+      name,
+      email,
+      phone,
+      departureCity,
+      destination,
+      date,
+      days,
+      persons,
+      budget,
+      message,
+    } = body;
 
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.ADMIN_EMAIL,
-        pass: process.env.ADMIN_EMAIL_PASS,
-      },
+    const adminEmail = process.env.ADMIN_EMAIL || "namohtourism@gmail.com";
+    const adminPass = process.env.ADMIN_EMAIL_PASS;
+
+    // If email credentials are provided, attempt to send emails via Gmail SMTP
+    if (adminEmail && adminPass) {
+      try {
+        const transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: adminEmail.trim(),
+            pass: adminPass.trim().replace(/\s+/g, ""),
+          },
+        });
+
+        const cleanPhone = (phone || "").trim();
+        const cleanDigits = cleanPhone.replace(/\D/g, "");
+        const waNumber = cleanDigits.length === 10 ? `91${cleanDigits}` : cleanDigits;
+
+        const waText = encodeURIComponent(
+          `Hello ${name || ""}, thank you for contacting Namoh Tourism regarding ${
+            destination || "your holiday"
+          }!`
+        );
+
+        const replySubject = encodeURIComponent(
+          `Namoh Tourism – Tour Inquiry for ${destination || "Your Holiday"}`
+        );
+
+        // 1. Email to Admin / Owner (Inquiry Alert)
+        const ownerEmailHtml = renderTemplate("inquiry", {
+          name,
+          email,
+          phone: cleanPhone,
+          waNumber,
+          waText,
+          replySubject,
+          departureCity,
+          destination,
+          date,
+          days,
+          persons,
+          budget,
+          message,
+        });
+
+        await transporter.sendMail({
+          from: `"Namoh Tourism" <${adminEmail}>`,
+          to: adminEmail,
+          replyTo: email,
+          subject: `✦ New Tour Inquiry: ${destination || "General"} – ${name || "Traveler"}`,
+          html: ownerEmailHtml,
+        });
+
+        // 2. Email to Customer / User (Thank You & Confirmation)
+        if (email && email.includes("@")) {
+          try {
+            const customerEmailHtml = renderTemplate("user-thankyou", {
+              name,
+              email,
+              phone: cleanPhone,
+              departureCity,
+              destination,
+              date,
+              days,
+              persons,
+              budget,
+              message,
+            });
+
+            await transporter.sendMail({
+              from: `"Namoh Tourism" <${adminEmail}>`,
+              to: email,
+              subject: `Thank you for choosing Namoh Tourism! Trip to ${destination || "India"}`,
+              html: customerEmailHtml,
+            });
+          } catch (customerMailErr) {
+            console.warn("⚠️ Could not send confirmation to customer:", customerMailErr.message);
+          }
+        }
+      } catch (mailError) {
+        console.error("⚠️ Nodemailer failed to send email (inquiry logged above):", mailError.message);
+      }
+    } else {
+      console.warn("⚠️ ADMIN_EMAIL_PASS not configured in .env.local. Inquiry logged successfully to console.");
+    }
+
+    return Response.json({
+      success: true,
+      message: "Your inquiry has been received! Our travel team will contact you shortly.",
     });
-
-    // Mail options
-    await transporter.sendMail({
-      from: `"Namoh Tourism" <${process.env.ADMIN_EMAIL}>`,
-      to: process.env.ADMIN_EMAIL,
-      subject: "New Tour Inquiry – Namoh Tourism",
-      html: `
-  <div style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 30px;">
-    <table width="100%" max-width="600px" align="center" cellpadding="0" cellspacing="0" 
-      style="background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      
-      <!-- Header -->
-      <tr>
-        <td style="background-color: #003566; padding: 20px; text-align: center;">
-          <h1 style="color: #ffffff; margin: 0;">Namoh Tourism</h1>
-          <p style="color: #dcdcdc; margin: 5px 0 0;">New Tour Inquiry Received</p>
-        </td>
-      </tr>
-
-      <!-- Body -->
-      <tr>
-        <td style="padding: 25px;">
-          <h2 style="margin-top: 0; color: #003566;">Customer Details</h2>
-
-          <table width="100%" cellpadding="8" cellspacing="0" 
-            style="border-collapse: collapse; margin-top: 15px;">
-            
-            <tr style="background-color: #f9fafb;">
-              <td><strong>Name:</strong></td>
-              <td>${name}</td>
-            </tr>
-
-            <tr>
-              <td><strong>Email:</strong></td>
-              <td>${email}</td>
-            </tr>
-
-            <tr style="background-color: #f9fafb;">
-              <td><strong>Phone:</strong></td>
-              <td>${phone}</td>
-            </tr>
-
-            <tr>
-              <td><strong>Travel Date:</strong></td>
-              <td>${date}</td>
-            </tr>
-
-            <tr style="background-color: #f9fafb;">
-              <td><strong>Destination:</strong></td>
-              <td>${destination}</td>
-            </tr>
-
-            <tr>
-              <td><strong>Number of Persons:</strong></td>
-              <td>${persons}</td>
-            </tr>
-
-          </table>
-
-          <h3 style="margin-top: 25px; color: #003566;">Message</h3>
-          <p style="background: #f4f6f8; padding: 15px; border-radius: 6px;">
-            ${message}
-          </p>
-        </td>
-      </tr>
-
-      <!-- Footer -->
-      <tr>
-        <td style="background-color: #f1f1f1; padding: 15px; text-align: center; font-size: 12px; color: #777;">
-          © ${new Date().getFullYear()} Namoh Tourism | All Rights Reserved
-        </td>
-      </tr>
-
-    </table>
-  </div>
-  `,
-    });
-
-    return Response.json({ success: true });
   } catch (error) {
-    console.error(error);
-    return Response.json({ success: false }, { status: 500 });
+    console.error("❌ Error processing contact inquiry:", error);
+    return Response.json(
+      { success: false, message: "Error submitting inquiry" },
+      { status: 500 }
+    );
   }
 }

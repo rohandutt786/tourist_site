@@ -6,13 +6,12 @@
     "image": "/images/home.jpg",
     "mobileImage": "/images/long-image.jpg"
   },
-
   "tours": [
     {
       "id": 1,
       "title": "Manali",
       "description": "A beautiful hill station in Himachal Pradesh.",
-      "image": "/images/manali.jpg"
+      "image": "/images/touristplaces/manali/manali1.jpeg"
     },
     {
       "id": 2,
@@ -39,23 +38,34 @@
       "image": "/images/touristplaces/kerala/kerala1.jpg"
     }
   ],
-
   "packages": [
     {
       "id": 1,
       "title": "Shimla & Manali Tour",
       "location": "Himachal Pradesh, India",
-      "image": "/images/manali.jpg",
+      "image": "/images/touristplaces/manali/manali1.jpeg",
       "price": "₹14,999",
       "description": "Skies are clear after the monsoon, the hills are green and the apple season is on. The classic Himachal circuit, planned by road from Delhi.",
       "facilities": {
         "meal": true,
         "hotel": true,
-        "transport": ["Cab", "Volvo"],
+        "transport": [
+          "Cab",
+          "Volvo"
+        ],
         "tourImages": [
           "/images/touristplaces/manali/manali1.jpeg",
           "/images/touristplaces/manali/manali2.jpeg",
-          "/images/touristplaces/manali/manali3.jpeg"
+          "/images/touristplaces/manali/manali3.jpeg",
+          "/images/touristplaces/manali/Shimla 1.jpg",
+          "/images/touristplaces/manali/Shimla 2.jpg",
+          "/images/touristplaces/manali/Shimla 3.avif",
+          "/images/touristplaces/manali/Shimla 4.avif",
+          "/images/touristplaces/manali/Shimla 5.avif",
+          "/images/touristplaces/manali/Manali 1.jpg",
+          "/images/touristplaces/manali/Manali 2.jpg",
+          "/images/touristplaces/manali/Manali 3.jpg",
+          "/images/touristplaces/manali/Manali 4.jpg"
         ],
         "durationPlans": [
           {
@@ -162,16 +172,24 @@
       "title": "Jammu & Kashmir Adventure",
       "location": "Jammu & Kashmir, India",
       "price": "₹22,499",
-      "image": "/images/j&k.jpeg",
+      "image": "/images/touristplaces/jammukashmir/j&k2.jpeg",
       "description": "Autumn light on the chinar trees, crisp air and clear mountain views. Trips start and end at Srinagar. Flights or trains to reach Kashmir can be arranged on request.",
       "facilities": {
         "meal": true,
         "hotel": true,
-        "transport": ["Cab", "Volvo"],
+        "transport": [
+          "Cab",
+          "Volvo"
+        ],
         "tourImages": [
           "/images/touristplaces/jammukashmir/j&k2.jpeg",
           "/images/touristplaces/jammukashmir/Sonmarg.jpeg",
-          "/images/touristplaces/jammukashmir/gulmarg.jpeg"
+          "/images/touristplaces/jammukashmir/gulmarg.jpeg",
+          "/images/touristplaces/jammukashmir/Jammu 1.jpg",
+          "/images/touristplaces/jammukashmir/Jammu 2.jpg",
+          "/images/touristplaces/jammukashmir/Jammu 3.jpg",
+          "/images/touristplaces/jammukashmir/Jammu 4.jpg",
+          "/images/touristplaces/jammukashmir/Jammu 5.jpg"
         ],
         "durationPlans": [
           {
@@ -278,17 +296,25 @@
       "title": "Rajasthan Heritage Tour",
       "location": "Rajasthan, India",
       "price": "₹15,999",
-      "image": "/images/jaipur.jpg",
+      "image": "/images/touristplaces/rajasthan/rajasthan2.jpeg",
       "description": "Discover grand royal palaces, invincible hilltop forts, desert safaris, and the colorful vibrant culture of Rajasthan.",
       "facilities": {
         "meal": true,
         "hotel": true,
-        "transport": ["Cab", "Volvo"],
+        "transport": [
+          "Cab",
+          "Volvo"
+        ],
         "tourImages": [
           "/images/touristplaces/rajasthan/rajasthan1.jpeg",
           "/images/touristplaces/rajasthan/rajasthan2.jpeg",
           "/images/touristplaces/rajasthan/rajasthan3.jpeg",
-          "/images/touristplaces/rajasthan/rajasthan4.jpeg"
+          "/images/touristplaces/rajasthan/rajasthan4.jpeg",
+          "/images/touristplaces/rajasthan/Raj 1.jpg",
+          "/images/touristplaces/rajasthan/Raj 2.jpg",
+          "/images/touristplaces/rajasthan/Raj 3.jpg",
+          "/images/touristplaces/rajasthan/Raj 4.jpg",
+          "/images/touristplaces/rajasthan/Raj 5.jpg"
         ],
         "durationPlans": [
           {
@@ -395,18 +421,22 @@
       "title": "Uttarakhand Nature Trip",
       "location": "Uttarakhand, India",
       "price": "₹18,499",
-      "image": "/images/uttrakhand.jpeg",
+      "image": "/images/touristplaces/uttrakhand/uttrakhan1.jpeg",
       "description": "Explore serene mountains, rushing rivers, wildlife safaris, and spiritual retreats across the divine Himalayas.",
       "facilities": {
         "meal": true,
         "hotel": true,
-        "transport": ["Cab", "Volvo"],
+        "transport": [
+          "Cab",
+          "Volvo"
+        ],
         "tourImages": [
           "/images/touristplaces/uttrakhand/uttrakhan1.jpeg",
-          "/images/touristplaces/uttrakhand/uttrakhand2.jpeg",
           "/images/touristplaces/uttrakhand/uttrakhand3.jpeg",
-          "/images/touristplaces/uttrakhand/uttrakhand4.jpeg",
-          "/images/touristplaces/uttrakhand/uttrakhand5.jpeg"
+          "/images/touristplaces/uttrakhand/UK 1.jpeg",
+          "/images/touristplaces/uttrakhand/UK 2.jpg",
+          "/images/touristplaces/uttrakhand/UK 3.jpg",
+          "/images/touristplaces/uttrakhand/UK 4.jpg"
         ],
         "durationPlans": [
           {
@@ -496,7 +526,10 @@
       "facilities": {
         "meal": true,
         "hotel": true,
-        "transport": ["Cab", "Volvo"],
+        "transport": [
+          "Cab",
+          "Volvo"
+        ],
         "tourImages": [
           "/images/touristplaces/kerala/kerala1.jpg",
           "/images/touristplaces/kerala/kerala2.jpg",
@@ -565,45 +598,58 @@
     },
     "team": [
       {
-        "name": "Mahesh Chand Gupta",
+        "name": "Mahesh Chand",
         "role": "Founder",
         "image": "/images/team/Founder.png"
       },
       {
         "name": "Abhishek Gupta",
-        "role": "Managing Director",
+        "role": "Co Founder",
         "image": "/images/team/Managing Director.png"
       },
       {
         "name": "Kirti",
-        "role": "Director",
+        "role": "Manager",
         "image": "/images/team/Manager.png"
       }
     ],
     "gallery": [
-      { "image": "/images/gallery/gallery1.jpeg" },
-      { "image": "/images/gallery/gallery2.webp" },
-      { "image": "/images/gallery/gallery3.jpg" },
-      { "image": "/images/gallery/gallery4.jpeg" },
-      { "image": "/images/gallery/gallery5.jpg" },
-
-      { "image": "/images/gallery/gallery6.jpg" },
-      { "image": "/images/gallery/gallery7.jpeg" },
-      { "image": "/images/gallery/gallery8.jpeg" }
+      {
+        "image": "/images/gallery/gallery1.jpeg"
+      },
+      {
+        "image": "/images/gallery/gallery2.webp"
+      },
+      {
+        "image": "/images/gallery/gallery3.jpg"
+      },
+      {
+        "image": "/images/gallery/gallery4.jpeg"
+      },
+      {
+        "image": "/images/gallery/gallery5.jpg"
+      },
+      {
+        "image": "/images/gallery/gallery6.jpg"
+      },
+      {
+        "image": "/images/gallery/gallery7.jpeg"
+      },
+      {
+        "image": "/images/gallery/gallery8.jpeg"
+      }
     ]
   },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Have questions about tour packages or need help planning your trip? We’re here to help you.",
     "backgroundImage": "/images/contact-us.jpg",
-
     "info": {
       "email": "namohtourism@gmail.com",
       "phone": "+91 85806 36332",
-      "address": "New Delhi, India",
+      "address": "Prasad Bhawan , Khalini , Distt. Shimla, H.P.171002",
       "hours": "Monday – Saturday: 9:00 AM – 6:00 PM"
     },
-
     "form": {
       "title": "Send Us a Message"
     }
@@ -648,20 +694,30 @@
   ],
   "footer": {
     "companyName": "Namoh Tourism",
-    "description": "Your trusted travel partner for unforgettable journeys.",
-
+    "description": "Your trusted travel partner for unforgettable journeys. Specialising in bespoke, custom tour packages and curated holiday experiences across India.",
     "quickLinks": [
-      { "name": "Home", "path": "/" },
-      { "name": "Packages", "path": "/packages" },
-      { "name": "About Us", "path": "/about-us" },
-      { "name": "Contact Us", "path": "/contact-us" }
+      {
+        "name": "Home",
+        "path": "/"
+      },
+      {
+        "name": "Packages",
+        "path": "/packages"
+      },
+      {
+        "name": "About Us",
+        "path": "/about-us"
+      },
+      {
+        "name": "Contact Us",
+        "path": "/contact-us"
+      }
     ],
-
     "contact": {
       "email": "namohtourism@gmail.com",
-      "phone": "+91 85806 36332"
+      "phone": "+91 85806 36332",
+      "address": "Prasad Bhawan , Khalini , Distt. Shimla, H.P.171002"
     },
-
     "social": {
       "instagram": "https://www.instagram.com/namoh_tourism?igsh=eXQ1bXluMDEzYzN1&utm_source=qr",
       "facebook": "https://www.facebook.com/share/1Ai4wsVt2R/",

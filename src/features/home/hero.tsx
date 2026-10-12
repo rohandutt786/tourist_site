@@ -44,10 +44,11 @@ export default function HomeHero() {
       {/* HERO CONTENT */}
       <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto pt-12 pb-24">
         {/* Floating Trust Pill Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs sm:text-sm font-semibold mb-6 shadow-xl animate-float">
-          <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-ping" />
-          <span className="text-white/90">Namoh Tourism</span>
-          <span className="text-amber-400 font-bold">✦ Verified Holiday Specialist across India</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm mb-6 shadow-xl animate-float">
+          <span className="flex h-2 w-2 rounded-full bg-amber-400" />
+          <span className="text-white font-bold tracking-wide">Namoh Tourism</span>
+          <span className="text-white/30">•</span>
+          <span className="text-slate-200 font-medium">Verified Holiday Specialist across India</span>
         </div>
 
         {/* Heading */}
@@ -60,7 +61,7 @@ export default function HomeHero() {
 
         {/* Subtitle */}
         <p className="text-base sm:text-xl md:text-2xl text-slate-200 mb-8 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-sm">
-          {homeHero.subtitle} — Handcrafted itineraries for Himachal, Kashmir, Rajasthan & Uttarakhand.
+          {homeHero.subtitle} — Handcrafted itineraries and customized holiday packages across India.
         </p>
 
         {/* Single CTA */}
@@ -77,7 +78,7 @@ export default function HomeHero() {
         {/* PROOF METRICS BAR (DESKTOP/TABLET) */}
         <div className="mt-14 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 max-w-2xl mx-auto text-center">
           <div className="flex flex-col items-center">
-            <span className="text-xl sm:text-2xl font-black text-amber-300">5,000+</span>
+            <span className="text-xl sm:text-2xl font-black text-amber-300">500+</span>
             <span className="text-[11px] sm:text-xs text-slate-300 font-medium">Delighted Travelers</span>
           </div>
 

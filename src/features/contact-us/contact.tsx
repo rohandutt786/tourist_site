@@ -2,12 +2,19 @@
 import Image from "next/image";
 import content from "@/data/content.json";
 
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { contactSchema } from "./schema";
 import { toast } from "sonner";
 
 export default function ContactUsFeature() {
+  const searchParams = useSearchParams();
+  const queryDestination =
+    searchParams.get("destination") || searchParams.get("package") || "";
+  const queryDays = searchParams.get("days")
+    ? (searchParams.get("days")?.replace(/\D/g, "") || "")
+    : "";
+
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const today = new Date().toISOString().split("T")[0];
@@ -17,21 +24,36 @@ export default function ContactUsFeature() {
     name: "",
     email: "",
     phone: "",
+    departureCity: "",
+    destination: queryDestination,
     date: "",
-    destination: "",
+    days: queryDays,
     persons: "",
+    budget: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (queryDestination || queryDays) {
+      setFormData((prev) => ({
+        ...prev,
+        destination: queryDestination || prev.destination,
+        days: queryDays || prev.days,
+      }));
+    }
+  }, [queryDestination, queryDays]);
+
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     // clear error when user types
-    if (errors[e.target.name]) {
+    if (errors[name]) {
       setErrors((prev) => {
         const updated = { ...prev };
-        delete updated[e.target.name];
+        delete updated[name];
         return updated;
       });
     }
@@ -51,6 +73,7 @@ export default function ContactUsFeature() {
       });
 
       setErrors(fieldErrors);
+      toast.error("Please fill all required fields correctly.");
       return;
     }
 
@@ -76,15 +99,18 @@ export default function ContactUsFeature() {
           name: "",
           email: "",
           phone: "",
-          date: "",
+          departureCity: "",
           destination: "",
+          date: "",
+          days: "",
           persons: "",
+          budget: "",
           message: "",
         });
       } else {
-        toast.error("Something went wrong ");
+        toast.error(data.message || "Something went wrong ");
       }
-    } catch (error) {
+    } catch {
       toast.error("Server error ");
     } finally {
       setLoading(false);
@@ -138,139 +164,205 @@ export default function ContactUsFeature() {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white/20 backdrop-blur rounded-2xl p-8 text-gray-800 shadow-lg h-fit md:min-h-[720px]">
+          {/* Contact Form with original transparent backdrop blur */}
+          <div className="bg-white/20 backdrop-blur rounded-2xl p-8 text-gray-800 shadow-lg h-fit">
             <h2 className="text-2xl font-semibold mb-4 text-white">
               {contact.form.title}
             </h2>
 
-            <form className="space-y-3" onSubmit={handleSubmit}>
-              {/* Name */}
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className={`w-full border rounded-lg px-4 py-2 ${
-                    errors.name ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
-                <p
-                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
-                    errors.name ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {errors.name}
-                </p>
+            <form className="space-y-2.5" onSubmit={handleSubmit}>
+              {/* Row 1: Name & Email */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.name ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.name ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.name}
+                  </p>
+                </div>
+
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your Email"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.email ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.email ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.email}
+                  </p>
+                </div>
               </div>
 
-              {/* Email */}
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your Email"
-                  className={`w-full border rounded-lg px-4 py-2 ${
-                    errors.email ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
-                <p
-                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
-                    errors.email ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {errors.email}
-                </p>
+              {/* Row 2: Phone & Departure City */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Phone Number"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.phone ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.phone ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.phone}
+                  </p>
+                </div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="departureCity"
+                    value={formData.departureCity}
+                    onChange={handleChange}
+                    placeholder="Departure City (e.g. Delhi)"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.departureCity ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.departureCity ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.departureCity}
+                  </p>
+                </div>
               </div>
 
-              {/* Phone */}
-              <div>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Phone Number"
-                  className={`w-full border rounded-lg px-4 py-2 ${
-                    errors.phone ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
-                <p
-                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
-                    errors.phone ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {errors.phone}
-                </p>
+              {/* Row 3: Destination & Travel Date */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <input
+                    type="text"
+                    name="destination"
+                    value={formData.destination}
+                    onChange={handleChange}
+                    placeholder="Destination (e.g. Kashmir)"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.destination ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.destination ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.destination}
+                  </p>
+                </div>
+
+                <div>
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    min={today}
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.date ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.date ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.date}
+                  </p>
+                </div>
               </div>
 
-              {/* Date */}
-              <div>
-                <input
-                  type="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  min={today}
-                  className={`w-full border rounded-lg px-4 py-2 ${
-                    errors.date ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
+              {/* Row 4: Days, Persons & Budget */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <input
+                    type="number"
+                    min="1"
+                    name="days"
+                    value={formData.days}
+                    onChange={handleChange}
+                    placeholder="Days (e.g. 5)"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.days ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.days ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.days}
+                  </p>
+                </div>
 
-                <p
-                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
-                    errors.date ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {errors.date}
-                </p>
-              </div>
+                <div>
+                  <input
+                    type="number"
+                    min="1"
+                    name="persons"
+                    value={formData.persons}
+                    onChange={handleChange}
+                    placeholder="Persons"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.persons ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.persons ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.persons}
+                  </p>
+                </div>
 
-              {/* Destination */}
-              <div>
-                <input
-                  type="text"
-                  name="destination"
-                  value={formData.destination}
-                  onChange={handleChange}
-                  placeholder="Destination"
-                  className={`w-full border rounded-lg px-4 py-2 ${
-                    errors.destination ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
-                <p
-                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
-                    errors.destination ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {errors.destination}
-                </p>
-              </div>
-
-              {/* Persons */}
-              <div>
-                <input
-                  type="number"
-                  min="1"
-                  name="persons"
-                  value={formData.persons}
-                  onChange={handleChange}
-                  placeholder="Number of Persons"
-                  className={`w-full border rounded-lg px-4 py-2 ${
-                    errors.persons ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
-                <p
-                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
-                    errors.persons ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {errors.persons}
-                </p>
+                <div>
+                  <input
+                    type="text"
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    placeholder="Budget (₹)"
+                    className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
+                      errors.budget ? "border-red-500" : "border-gray-300"
+                    }`}
+                  />
+                  <p
+                    className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                      errors.budget ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {errors.budget}
+                  </p>
+                </div>
               </div>
 
               {/* Message */}
@@ -279,14 +371,14 @@ export default function ContactUsFeature() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your Message"
-                  rows={4}
-                  className={`w-full border rounded-lg px-4 py-2 ${
+                  placeholder="Your Message (Optional)"
+                  rows={3}
+                  className={`w-full bg-white border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#002855] ${
                     errors.message ? "border-red-500" : "border-gray-300"
                   }`}
                 />
                 <p
-                  className={`text-red-500 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
+                  className={`text-red-300 text-sm mt-1 min-h-[18px] transition-opacity duration-200 ${
                     errors.message ? "opacity-100" : "opacity-0"
                   }`}
                 >

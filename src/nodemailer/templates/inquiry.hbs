@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Tour Inquiry – Namoh Tourism</title>
+  </head>
+  <body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#111827;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f4f5;min-width:100%;">
+      <tr>
+        <td align="center" style="padding:40px 16px;">
+
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,0.08);border:1px solid #e5e7eb;">
+
+            <!-- Top Gradient Bar -->
+            <tr>
+              <td style="height:5px;background:linear-gradient(90deg, #002855 0%, #d4af37 100%);"></td>
+            </tr>
+
+            <!-- Header -->
+            <tr>
+              <td align="center" style="padding:28px 40px 20px;text-align:center;">
+                <img
+                  src="{{logoUrl}}"
+                  alt="Namoh Tourism"
+                  width="150"
+                  style="display:block;margin:0 auto;border:0;outline:none;max-width:150px;height:auto;"
+                />
+              </td>
+            </tr>
+
+            <!-- Divider -->
+            <tr>
+              <td style="padding:0 40px;">
+                <div style="height:1px;background:#ececec;"></div>
+              </td>
+            </tr>
+
+            <!-- Content -->
+            <tr>
+              <td style="padding:32px 40px;">
+
+                <!-- Status Badge -->
+                <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;">
+                  <tr>
+                    <td style="background:#fef3c7;border:1px solid #fde68a;border-radius:20px;padding:5px 14px;">
+                      <span style="font-size:11px;font-weight:700;color:#92400e;letter-spacing:.5px;text-transform:uppercase;">
+                        ✦ New Tour Inquiry Received
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Heading -->
+                <h2 style="margin:0 0 10px;font-size:22px;font-weight:800;color:#002855;line-height:1.3;">
+                  Inquiry for: <span style="color:#b45309;">{{destination}}</span>
+                </h2>
+
+                <p style="margin:0 0 24px;font-size:14px;line-height:24px;color:#64748b;">
+                  A new travel inquiry has been received from the Namoh Tourism website portal. Full customer and itinerary preferences are detailed below:
+                </p>
+
+                <!-- Details Card -->
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;">
+                  <tr>
+                    <td style="padding:20px 24px;">
+
+                      <table width="100%" cellpadding="0" cellspacing="0" style="font-size:13.5px;">
+
+                        <tr>
+                          <td style="padding:10px 0;width:42%;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Customer Name
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:14px;font-weight:700;color:#002855;">
+                              {{name}}
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Phone / WhatsApp
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <a href="tel:{{phone}}" style="font-size:14px;font-weight:700;color:#002855;text-decoration:none;">
+                              {{phone}}
+                            </a>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Email Address
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <a href="mailto:{{email}}" style="font-size:14px;font-weight:600;color:#0284c7;text-decoration:none;">
+                              {{email}}
+                            </a>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Departure City
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:14px;font-weight:600;color:#111827;">
+                              {{departureCity}}
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Destination
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:14px;font-weight:700;color:#002855;">
+                              {{destination}}
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Travel Date
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:14px;font-weight:600;color:#111827;">
+                              {{date}}
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Duration
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:14px;font-weight:600;color:#111827;">
+                              {{days}} Days
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Persons
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:14px;font-weight:600;color:#111827;">
+                              {{persons}} Persons
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2" style="border-top:1px solid #e5e7eb;"></td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;">
+                              Budget
+                            </span>
+                          </td>
+                          <td style="padding:10px 0;">
+                            <span style="font-size:14px;font-weight:800;color:#15803d;">
+                              {{budget}}
+                            </span>
+                          </td>
+                        </tr>
+
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Special Requests / Notes -->
+                {{#if message}}
+                  <div style="margin-top:20px;background:#fffbeb;border:1px solid #fef3c7;border-left:4px solid #d97706;border-radius:8px;padding:14px 18px;">
+                    <span style="font-size:11px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px;">
+                      Special Requirements / Notes:
+                    </span>
+                    <p style="margin:0;font-size:13.5px;color:#451a03;line-height:22px;">
+                      {{message}}
+                    </p>
+                  </div>
+                {{/if}}
+
+                <!-- Action Buttons -->
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:28px;">
+                  <tr>
+                    <td align="center">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="padding:0 5px;">
+                            <a href="tel:{{phone}}" style="display:inline-block;background:#002855;color:#ffffff;text-decoration:none;font-size:12.5px;font-weight:700;padding:10px 18px;border-radius:8px;">
+                              📞 Call
+                            </a>
+                          </td>
+                          <td style="padding:0 5px;">
+                            <a href="https://wa.me/{{waNumber}}?text={{waText}}" target="_blank" style="display:inline-block;background:#25d366;color:#ffffff;text-decoration:none;font-size:12.5px;font-weight:700;padding:10px 18px;border-radius:8px;">
+                              💬 WhatsApp
+                            </a>
+                          </td>
+                          <td style="padding:0 5px;">
+                            <a href="mailto:{{email}}?subject={{replySubject}}" style="display:inline-block;background:#475569;color:#ffffff;text-decoration:none;font-size:12.5px;font-weight:700;padding:10px 18px;border-radius:8px;">
+                              ✉️ Email
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+              </td>
+            </tr>
+
+            <!-- Divider -->
+            <tr>
+              <td style="padding:0 40px;">
+                <div style="height:1px;background:#ececec;"></div>
+              </td>
+            </tr>
+
+            <!-- Signature -->
+            <tr>
+              <td style="padding:24px 40px 20px;">
+                <p style="margin:0 0 4px;font-size:13.5px;color:#374151;">
+                  Warm regards,
+                </p>
+                <p style="margin:0;font-size:14px;font-weight:700;color:#002855;">
+                  Namoh Tourism Team
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td align="center" style="background:#fafafa;border-top:1px solid #ececec;padding:20px 40px;text-align:center;">
+                <p style="margin:0 0 6px;font-size:12px;color:#64748b;line-height:18px;">
+                  Prasad Bhawan, Khalini, Distt. Shimla, H.P. 171002
+                </p>
+                <p style="margin:0;font-size:11px;color:#9ca3af;line-height:16px;">
+                  This is an automated notification from namohtourism website inquiry portal.<br />
+                  © {{currentYear}} Namoh Tourism. All rights reserved.
+                </p>
+              </td>
+            </tr>
+
+          </table>
+
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
