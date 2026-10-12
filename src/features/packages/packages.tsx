@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import content from "@/data/content.json";
 
 import {
@@ -22,6 +23,8 @@ import {
   Coffee,
   HomeIcon,
   Sparkles,
+  ArrowRight,
+  PhoneCall,
 } from "lucide-react";
 
 type ItineraryItem = {
@@ -416,6 +419,30 @@ export default function PackagesFeature() {
                         </strong>{" "}
                         this is a standard, rough itinerary by cab. Volvo + cab, flights, hotels, route and price are customised to your requirements.
                       </p>
+                    </div>
+
+                    {/* ENQUIRE / CONTACT CTA */}
+                    <div className="mt-6 rounded-2xl bg-gradient-to-r from-[#002855] to-[#001f42] p-5 md:p-6 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-amber-400/30">
+                      <div>
+                        <span className="text-amber-400 text-xs font-bold uppercase tracking-wider">
+                          Customized Holiday Planning
+                        </span>
+                        <h4 className="text-lg md:text-xl font-extrabold mt-0.5">
+                          Enquire About {selectedPkg.title}
+                        </h4>
+                        <p className="text-xs md:text-sm text-slate-300 mt-1 max-w-md font-light">
+                          Selected Plan: {currentDurationPlan?.duration || "Custom duration"}. We customize hotel stays, routes, and cab transfers as per your choice.
+                        </p>
+                      </div>
+
+                      <Link
+                        href={`/contact-us?destination=${encodeURIComponent(selectedPkg.title)}&days=${encodeURIComponent(currentDurationPlan?.days || "")}`}
+                        className="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-sm px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+                      >
+                        <PhoneCall size={16} />
+                        <span>Contact Us to Book</span>
+                        <ArrowRight size={16} />
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -26,7 +26,7 @@ export default function Footer() {
           </Link>
 
           <p className="text-sm text-slate-300/90 leading-relaxed max-w-sm">
-            {footer.description} Specialising in bespoke, custom tour packages for Himachal, Kashmir, Rajasthan & Uttarakhand.
+            {footer.description}
           </p>
 
           <div className="flex items-center gap-2 pt-2 text-xs text-amber-300/90 font-medium">
@@ -90,7 +90,7 @@ export default function Footer() {
 
             <li className="flex items-center gap-2.5">
               <MapPin size={16} className="text-[#d4af37] flex-shrink-0" />
-              <span className="text-slate-400">New Delhi & Pan-India Operations</span>
+              <span className="text-slate-400">Prasad Bhawan , Khalini , Distt. Shimla, H.P.171002</span>
             </li>
           </ul>
         </div>

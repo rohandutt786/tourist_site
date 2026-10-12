@@ -9,11 +9,12 @@ export const contactSchema = z.object({
     .max(15, "Phone number is too long")
     .regex(/^[0-9+ ]+$/, "Invalid phone number"),
 
-  date: z.string().min(1, "Please select a travel date"),
+  departureCity: z.string().min(2, "Departure city is required"),
   destination: z.string().min(2, "Destination is required"),
-
-  //  FIXED HERE
+  date: z.string().min(1, "Please select a travel date"),
+  days: z.coerce.number().min(1, "Number of days must be at least 1"),
   persons: z.coerce.number().min(1, "Persons must be at least 1"),
-
-  message: z.string().min(5, "Message must be at least 5 characters"),
+  budget: z.string().min(1, "Please specify your budget"),
+  message: z.string().optional().or(z.literal("")),
 });
+

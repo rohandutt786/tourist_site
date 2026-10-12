@@ -82,7 +82,7 @@ export default function Navbar({ setIsOpen }: NavbarProps) {
         {/* Action Button: Book Now */}
         <div className="flex items-center">
           <Link
-            href="/packages"
+            href="/contact-us"
             className="group relative inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-2.5 rounded-lg md:rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-[#002855] text-xs md:text-sm font-black shadow-md shadow-amber-500/25 hover:shadow-lg hover:shadow-amber-500/40 border border-amber-300/60 transition-all duration-300 active:scale-95 overflow-hidden"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
