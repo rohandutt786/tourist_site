@@ -43,7 +43,7 @@ export function renderTemplate(
   });
 
   const siteUrl = (
-    process.env.NEXT_PUBLIC_SITE_URL || "https://tourist-site-blue.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://namohtourism.com"
   ).replace(/\/$/, "");
 
   return template({
