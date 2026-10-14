@@ -5,6 +5,7 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import content from "@/data/content.json";
+import OfferRibbonBadge from "@/components/offers/OfferRibbonBadge";
 
 export default function HomeTours() {
   const tours = content.tours;
@@ -50,10 +51,10 @@ export default function HomeTours() {
                   {/* Subtle Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-                  {/* Destination Tag */}
+                  {/* Destination Tag (Full Name, No Truncation) */}
                   <div className="absolute top-4 left-4 z-10">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#002855] text-xs font-bold shadow-sm">
-                      <MapPin size={12} className="text-amber-600" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#002855] text-xs font-extrabold shadow-md">
+                      <MapPin size={13} className="text-amber-600 shrink-0" />
                       <span>{tour.title}</span>
                     </span>
                   </div>
@@ -68,9 +69,14 @@ export default function HomeTours() {
 
                 {/* Card Details */}
                 <div className="p-6 flex flex-col justify-between flex-1">
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-slate-600 text-sm leading-relaxed mb-3 line-clamp-2">
                     {tour.description}
                   </p>
+
+                  {/* Festive Offer Badge inside card */}
+                  <div className="mb-3">
+                    <OfferRibbonBadge size="sm" />
+                  </div>
 
                   <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#002855] group-hover:text-amber-700 transition-colors">
                     <span className="uppercase tracking-wider">Explore Packages</span>

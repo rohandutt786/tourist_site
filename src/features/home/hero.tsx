@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Compass, ShieldCheck, Star, Users } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import content from "@/data/content.json";
+import HeroFestiveOverlayBanner from "@/components/offers/HeroFestiveOverlayBanner";
 
 export default function HomeHero() {
   const { homeHero } = content;
@@ -16,6 +16,9 @@ export default function HomeHero() {
 
   return (
     <section className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden">
+      {/* FLOATING FESTIVE AD OVERLAY (DISMISSIBLE BY VISITOR) */}
+      <HeroFestiveOverlayBanner />
+
       {/* MOBILE IMAGE with slow subtle zoom */}
       <div className="absolute inset-0 md:hidden scale-105 transition-transform duration-[12000ms] ease-out">
         <Image
@@ -42,14 +45,7 @@ export default function HomeHero() {
       <div className="absolute inset-0 bg-gradient-to-t from-[#001733] via-black/45 to-black/30" />
 
       {/* HERO CONTENT */}
-      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto pt-12 pb-24">
-        {/* Floating Trust Pill Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm mb-6 shadow-xl animate-float">
-          <span className="flex h-2 w-2 rounded-full bg-amber-400" />
-          <span className="text-white font-bold tracking-wide">Namoh Tourism</span>
-          <span className="text-white/30">•</span>
-          <span className="text-slate-200 font-medium">Verified Holiday Specialist across India</span>
-        </div>
+      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto pt-16 pb-24">
 
         {/* Heading */}
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-5 leading-[1.1] font-sans drop-shadow-md">

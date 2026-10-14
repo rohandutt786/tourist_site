@@ -25,7 +25,11 @@ import {
   Sparkles,
   ArrowRight,
   PhoneCall,
+  Gift,
 } from "lucide-react";
+import { getActiveOffer } from "@/config/offers.config";
+import OfferRibbonBadge from "@/components/offers/OfferRibbonBadge";
+import OfferModalCallout from "@/components/offers/OfferModalCallout";
 
 type ItineraryItem = {
   day: string;
@@ -64,6 +68,7 @@ type PackageType = {
 
 export default function PackagesFeature() {
   const { packages } = content as { packages: PackageType[] };
+  const offer = getActiveOffer();
 
   const [selectedPkg, setSelectedPkg] = useState<PackageType | null>(null);
   const [currentImage, setCurrentImage] = useState(0);
@@ -73,6 +78,15 @@ export default function PackagesFeature() {
     <section className="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-white via-slate-50/40 to-white">
       {/* SECTION HEADER */}
       <div className="text-center mb-16 max-w-3xl mx-auto">
+        {offer && (
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/15 via-yellow-500/25 to-amber-600/15 border border-amber-300/80 text-xs sm:text-sm font-bold text-amber-900 mb-4 shadow-sm animate-pulse">
+            <span>{offer.emoji}</span>
+            <span>{offer.offerTitle}</span>
+            <span className="text-amber-400">•</span>
+            <span className="text-amber-800 font-semibold">{offer.discountText} Valid till {offer.validTillDisplay}</span>
+          </div>
+        )}
+        <br />
         <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200/80 mb-3 shadow-xs">
           <Sparkles size={13} className="text-amber-600" />
           <span>Curated Holiday Packages</span>
@@ -101,6 +115,10 @@ export default function PackagesFeature() {
                 className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              {/* Festive Offer Badge Top Right */}
+              <div className="absolute top-3.5 right-3.5 z-10">
+                <OfferRibbonBadge size="sm" />
+              </div>
             </div>
 
             {/* CONTENT */}
@@ -411,6 +429,9 @@ export default function PackagesFeature() {
                       </div>
                     </div>
 
+                    {/* FESTIVE OFFER CALLOUT */}
+                    <OfferModalCallout className="mt-4" />
+
                     {/* PLEASE NOTE CALLOUT */}
                     <div className="mt-4 rounded-xl border-l-4 border-amber-500 bg-amber-50/70 border border-amber-200/80 p-4">
                       <p className="text-xs md:text-sm text-amber-950 leading-relaxed">
@@ -436,7 +457,7 @@ export default function PackagesFeature() {
                       </div>
 
                       <Link
-                        href={`/contact-us?destination=${encodeURIComponent(selectedPkg.title)}&days=${encodeURIComponent(currentDurationPlan?.days || "")}`}
+                        href={`/contact-us?destination=${encodeURIComponent(selectedPkg.title)}&days=${encodeURIComponent(currentDurationPlan?.days || "")}${offer ? `&deal=festive10` : ""}`}
                         className="w-full sm:w-auto flex-shrink-0 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-sm px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
                       >
                         <PhoneCall size={16} />
