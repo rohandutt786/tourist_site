@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Phone, Sparkles } from "lucide-react";
 import content from "@/data/content.json";
+import { getActiveOffer } from "@/config/offers.config";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -13,6 +14,7 @@ type SidebarProps = {
 export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
   const pathname = usePathname();
   const { footer } = content;
+  const offer = getActiveOffer();
 
   const menuItems = [
     { title: "Home", href: "/" },
@@ -98,6 +100,21 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 
         {/* Bottom CTA & Support in drawer */}
         <div className="p-5 border-t border-slate-100 bg-slate-50 space-y-3">
+          {offer && (
+            <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500/15 via-yellow-400/20 to-amber-600/15 border border-amber-300 text-slate-800 text-xs">
+              <div className="flex items-center gap-1.5 font-bold text-amber-900">
+                <span>{offer.emoji}</span>
+                <span>{offer.offerTitle}</span>
+                <span className="bg-emerald-600 text-white font-black text-[9px] px-1.5 py-0.5 rounded ml-auto">
+                  {offer.discountText}
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-600 mt-1">
+                Flat 10% Festive Discount applied on all holiday packages till {offer.validTillDisplay}.
+              </p>
+            </div>
+          )}
+
           <Link
             href="/packages"
             onClick={() => setIsOpen(false)}

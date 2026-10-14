@@ -6,9 +6,13 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { contactSchema } from "./schema";
 import { toast } from "sonner";
+import { Sparkles, Gift } from "lucide-react";
+import { getActiveOffer } from "@/config/offers.config";
 
 export default function ContactUsFeature() {
   const searchParams = useSearchParams();
+  const offer = getActiveOffer();
+  const queryDeal = searchParams.get("deal") || "";
   const queryDestination =
     searchParams.get("destination") || searchParams.get("package") || "";
   const queryDays = searchParams.get("days")
@@ -34,14 +38,19 @@ export default function ContactUsFeature() {
   });
 
   useEffect(() => {
-    if (queryDestination || queryDays) {
+    if (queryDestination || queryDays || queryDeal) {
       setFormData((prev) => ({
         ...prev,
         destination: queryDestination || prev.destination,
         days: queryDays || prev.days,
+        message:
+          prev.message ||
+          (queryDeal && offer
+            ? `Interested in booking with Diwali 10% Instant Festive Discount.`
+            : ""),
       }));
     }
-  }, [queryDestination, queryDays]);
+  }, [queryDestination, queryDays, queryDeal, offer]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -220,6 +229,24 @@ export default function ContactUsFeature() {
             <h2 className="text-2xl font-semibold mb-4 text-white">
               {contact.form.title}
             </h2>
+
+            {/* Festive Offer Callout Banner */}
+            {offer && (
+              <div className="mb-5 p-3.5 rounded-xl bg-gradient-to-r from-amber-500/25 via-yellow-400/20 to-amber-600/25 border border-amber-300/60 backdrop-blur-md text-white shadow-sm flex items-start gap-3">
+                <span className="text-2xl animate-pulse shrink-0">{offer.emoji}</span>
+                <div className="text-xs sm:text-sm">
+                  <div className="flex items-center gap-2 flex-wrap font-bold text-amber-300">
+                    <span>{offer.offerTitle}</span>
+                    <span className="bg-emerald-600 text-white font-black text-[10px] px-2 py-0.5 rounded-full shadow-xs">
+                      {offer.instantDiscountBadge}
+                    </span>
+                  </div>
+                  <p className="text-slate-100 text-xs mt-1 leading-relaxed">
+                    {offer.enquiryNote}
+                  </p>
+                </div>
+              </div>
+            )}
 
             <form className="space-y-2.5" onSubmit={handleSubmit}>
               {/* Row 1: Name & Email */}
