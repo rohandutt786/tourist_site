@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Urbanist } from "next/font/google";
 import { Toaster } from "sonner";
 import NextTopLoader from "nextjs-toploader";
@@ -6,6 +7,7 @@ import "./globals.css";
 import NavbarClient from "./NavbarClient";
 import { GlobalLoader } from "@/global/global-loader";
 import Footer from "@/features/home/footer";
+import { Analytics } from "@vercel/analytics/next";
 
 // Initialize Urbanist font
 const urbanist = Urbanist({
@@ -113,6 +115,24 @@ export default function RootLayout({
           <Toaster richColors position="bottom-right" />
         </GlobalLoader>
         <Footer />
+        <Analytics />
+
+        {/* Google Analytics 4 (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-C4E3G19SR6"
+        />
+        <Script
+          id="google-analytics-init"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-C4E3G19SR6');
+          `}
+        </Script>
       </body>
     </html>
   );
