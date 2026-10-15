@@ -26,6 +26,7 @@ export default function HomeHero() {
           alt={homeHero.title}
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -37,6 +38,7 @@ export default function HomeHero() {
           alt={homeHero.title}
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
       </div>
