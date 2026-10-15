@@ -14,12 +14,70 @@ const urbanist = Urbanist({
   weight: ["400", "500", "600", "700"],
 });
 
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://namohtourism.com"
+).replace(/\/$/, "");
+
 export const metadata: Metadata = {
-  title: "Namoh Tourism | Tour Packages & Travel",
-  description: "Explore the best tour packages across India with Namoh Tourism.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Namoh Tourism | Tour Packages & Travel in India",
+    template: "%s | Namoh Tourism",
+  },
+  description:
+    "Explore beautiful destinations across India with Namoh Tourism. Handcrafted holiday packages, verified hotels & private cabs across Shimla, Manali, Kashmir, Rajasthan & All India.",
+  keywords: [
+    "Namoh Tourism",
+    "Tour Packages India",
+    "Shimla Manali Tour Packages",
+    "Kashmir Tour Packages",
+    "Rajasthan Holiday Packages",
+    "Private Cab Booking Shimla",
+    "Customised Trips India",
+    "Himachal Travel Agency",
+  ],
+  authors: [{ name: "Namoh Tourism" }],
+  creator: "Namoh Tourism",
+  publisher: "Namoh Tourism",
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteUrl,
+    siteName: "Namoh Tourism",
+    title: "Namoh Tourism | Handcrafted Tour Packages & Private Cabs Across India",
+    description:
+      "Explore India with Namoh Tourism. 100% customized holiday itineraries, verified hotels and private cabs across Shimla, Manali, Kashmir, Rajasthan, Uttarakhand, Kerala & All India.",
+    images: [
+      {
+        url: "/images/og-share.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Namoh Tourism - Handcrafted Tour Packages & Private Cabs Across India",
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Namoh Tourism | Handcrafted Tour Packages & Private Cabs Across India",
+    description:
+      "Explore India with Namoh Tourism. 100% customized holiday itineraries, verified hotels and private cabs across Shimla, Manali, Kashmir, Rajasthan & All India.",
+    images: ["/images/og-share.jpg"],
+  },
   icons: {
-    icon: "/images/namoh_emblem.svg",
-    apple: "/images/namoh_emblem.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/images/favicon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/images/favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/images/favicon-192.png",
   },
 };
 
@@ -31,8 +89,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={urbanist.variable}>
       <head>
-        <link rel="icon" href="/images/namoh_emblem.svg" type="image/svg+xml" sizes="any" />
-        <link rel="apple-touch-icon" href="/images/namoh_emblem.svg" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/images/favicon-48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/images/favicon-96.png" type="image/png" sizes="96x96" />
+        <link rel="apple-touch-icon" href="/images/favicon-192.png" />
       </head>
       <body className="font-sans antialiased text-slate-800 bg-white">
         {/* Navbar + Sidebar handled inside client wrapper */}

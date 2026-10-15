@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, X, Clock, ShieldCheck } from "lucide-react";
 import { getActiveOffer } from "@/config/offers.config";
@@ -46,12 +46,17 @@ function RealisticDiya() {
 }
 
 export default function HeroFestiveOverlayBanner() {
+  const [mounted, setMounted] = useState(false);
   const [closed, setClosed] = useState(false);
 
   const offer = getActiveOffer();
   const timeLeft = useCountdown(offer?.validTill || "");
 
-  if (!offer || closed || timeLeft.isExpired) {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || !offer || closed || timeLeft.isExpired) {
     return null;
   }
 
@@ -120,7 +125,7 @@ export default function HeroFestiveOverlayBanner() {
                 <span>Ends In:</span>
               </div>
 
-              <div className="flex items-center justify-center gap-1 font-mono font-black text-[11px] sm:text-xs text-white">
+              <div suppressHydrationWarning className="flex items-center justify-center gap-1 font-mono font-black text-[11px] sm:text-xs text-white">
                 <span className="bg-white/10 px-1 rounded text-amber-300">{padZero(timeLeft.days)}d</span>
                 <span className="text-amber-400/70">:</span>
                 <span className="bg-white/10 px-1 rounded text-amber-300">{padZero(timeLeft.hours)}h</span>
