@@ -23,12 +23,20 @@ export function GlobalLoader({ children }: { children: React.ReactNode }) {
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
 
-  // Stop loading after route change with delay
+  // Stop loading after route change with delay and reset scroll to top
   useEffect(() => {
-    // Wrap setState in timeout to avoid synchronous setState in effect
-    const startTimer = setTimeout(() => setLoading(true), 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
-    const stopTimer = setTimeout(() => setLoading(false), 300);
+    // Wrap setState in timeout to avoid synchronous setState in effect
+    const startTimer = setTimeout(() => {
+      setLoading(true);
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }, 0);
+
+    const stopTimer = setTimeout(() => {
+      setLoading(false);
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }, 300);
 
     return () => {
       clearTimeout(startTimer);

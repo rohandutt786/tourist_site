@@ -77,7 +77,7 @@ export default function PackagesFeature() {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-white via-slate-50/40 to-white">
-      {/* SECTION HEADER */}
+      {/* SECTION HEADERS */}
       <div className="text-center mb-16 max-w-3xl mx-auto">
         {offer && (
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/15 via-yellow-500/25 to-amber-600/15 border border-amber-300/80 text-xs sm:text-sm font-bold text-amber-900 mb-4 shadow-sm animate-pulse">
@@ -166,6 +166,7 @@ export default function PackagesFeature() {
                 {/* BUTTON FIXED AT BOTTOM */}
                 <Link
                   href={`/packages/${pkg.slug || pkg.id}`}
+                  scroll={true}
                   className="w-full mt-4 bg-[#002855] hover:bg-[#001733] text-white font-bold text-sm rounded-xl py-3 border border-amber-500/20 hover:border-amber-400/60 shadow-xs hover:shadow-md cursor-pointer transition-all duration-200 flex items-center justify-center gap-2 group/btn"
                 >
                   <span>View Full Details & Itinerary</span>
@@ -360,21 +361,19 @@ export default function PackagesFeature() {
                                 key={idx}
                                 type="button"
                                 onClick={() => setSelectedDurationIndex(idx)}
-                                className={`px-5 py-2.5 rounded-2xl text-center transition-all duration-200 border flex flex-col items-center justify-center min-w-[105px] cursor-pointer ${
-                                  isSelected
+                                className={`px-5 py-2.5 rounded-2xl text-center transition-all duration-200 border flex flex-col items-center justify-center min-w-[105px] cursor-pointer ${isSelected
                                     ? "bg-[#002855] text-white border-[#002855] shadow-md ring-2 ring-[#002855]/20 scale-[1.02]"
                                     : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300"
-                                }`}
+                                  }`}
                               >
                                 <span className="text-sm font-bold leading-tight">
                                   {plan.days}
                                 </span>
                                 <span
-                                  className={`text-xs leading-tight mt-0.5 ${
-                                    isSelected
+                                  className={`text-xs leading-tight mt-0.5 ${isSelected
                                       ? "text-amber-200"
                                       : "text-slate-500"
-                                  }`}
+                                    }`}
                                 >
                                   {plan.nights}
                                 </span>
