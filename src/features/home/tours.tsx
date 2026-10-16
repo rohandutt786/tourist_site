@@ -10,6 +10,14 @@ import OfferRibbonBadge from "@/components/offers/OfferRibbonBadge";
 export default function HomeTours() {
   const tours = content.tours;
 
+  const tourSlugMap: Record<number, string> = {
+    1: "shimla-manali-tour",
+    2: "jammu-kashmir-adventure",
+    3: "rajasthan-heritage-tour",
+    4: "uttarakhand-nature-trip",
+    5: "kerala-backwaters-munnar-tour",
+  };
+
   return (
     <section id="packages" className="max-w-[1600px] mx-auto px-6 py-20 bg-gradient-to-b from-white via-slate-50/50 to-white">
       {/* SECTION HEADER */}
@@ -32,16 +40,16 @@ export default function HomeTours() {
         <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none hidden md:block" />
         <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none hidden md:block" />
 
-        <Marquee gradient={false} speed={40} pauseOnHover={true}>
+        <Marquee gradient={false} speed={40} pauseOnHover={true} className="py-2">
           {tours.map((tour) => (
             <Link
               key={tour.id}
-              href="/packages"
-              className="mx-4 sm:mx-6 min-w-[320px] sm:min-w-[360px] max-w-[400px] block group select-none"
+              href={`/packages/${tourSlugMap[tour.id] || ""}`}
+              className="mx-4 sm:mx-6 w-[310px] sm:w-[350px] block group select-none py-3"
             >
-              <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl border border-slate-200/80 hover:border-amber-400/50 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden flex flex-col">
+              <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl border border-slate-200/80 hover:border-amber-400/50 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden flex flex-col h-[490px] sm:h-[510px]">
                 {/* Image Container */}
-                <div className="relative h-72 sm:h-80 w-full overflow-hidden">
+                <div className="relative h-64 sm:h-72 w-full overflow-hidden shrink-0">
                   <Image
                     src={tour.image}
                     alt={tour.title}
@@ -68,8 +76,8 @@ export default function HomeTours() {
                 </div>
 
                 {/* Card Details */}
-                <div className="p-6 flex flex-col justify-between flex-1">
-                  <p className="text-slate-600 text-sm leading-relaxed mb-3 line-clamp-2">
+                <div className="p-5 sm:p-6 flex flex-col justify-between flex-1">
+                  <p className="text-slate-600 text-sm leading-relaxed mb-3 line-clamp-2 h-10">
                     {tour.description}
                   </p>
 

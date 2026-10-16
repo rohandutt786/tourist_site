@@ -16,19 +16,19 @@
     {
       "id": 2,
       "title": "Jammu & Kashmir",
-      "description": "Explore the serene valleys and mountains.",
+      "description": "Explore serene snow valleys, scenic lakes, and Himalayan peaks.",
       "image": "/images/touristplaces/jammukashmir/j&k2.jpeg"
     },
     {
       "id": 3,
       "title": "Jaipur",
-      "description": "The Pink City, full of history and culture.",
+      "description": "The Pink City, full of royal heritage forts, palaces, and rich culture.",
       "image": "/images/touristplaces/rajasthan/rajasthan2.jpeg"
     },
     {
       "id": 4,
-      "title": "Uttrakhand",
-      "description": "Home to the Himalayas and spiritual retreats.",
+      "title": "Uttarakhand",
+      "description": "Home to the mighty Himalayas, sacred spiritual retreats, and green hills.",
       "image": "/images/touristplaces/uttrakhand/uttrakhan1.jpeg"
     },
     {
@@ -165,7 +165,8 @@
             ]
           }
         ]
-      }
+      },
+      "slug": "shimla-manali-tour"
     },
     {
       "id": 2,
@@ -289,7 +290,8 @@
             ]
           }
         ]
-      }
+      },
+      "slug": "jammu-kashmir-adventure"
     },
     {
       "id": 3,
@@ -414,7 +416,8 @@
             ]
           }
         ]
-      }
+      },
+      "slug": "rajasthan-heritage-tour"
     },
     {
       "id": 4,
@@ -514,7 +517,8 @@
             ]
           }
         ]
-      }
+      },
+      "slug": "uttarakhand-nature-trip"
     },
     {
       "id": 5,
@@ -579,7 +583,8 @@
             ]
           }
         ]
-      }
+      },
+      "slug": "kerala-backwaters-munnar-tour"
     }
   ],
   "about": {
