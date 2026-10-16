@@ -1,9 +1,17 @@
 import type { MetadataRoute } from "next";
+import { getAllPackages } from "@/services/packages.service";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = (
     process.env.NEXT_PUBLIC_SITE_URL || "https://namohtourism.com"
   ).replace(/\/$/, "");
+
+  const packageEntries: MetadataRoute.Sitemap = getAllPackages().map((pkg) => ({
+    url: `${baseUrl}/packages/${pkg.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }));
 
   return [
     {
@@ -12,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1.0,
     },
+    ...packageEntries,
     {
       url: `${baseUrl}/packages`,
       lastModified: new Date(),

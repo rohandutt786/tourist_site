@@ -51,6 +51,7 @@ type DurationPlan = {
 
 type PackageType = {
   id: number;
+  slug?: string;
   title: string;
   location: string;
   image: string;
@@ -107,11 +108,15 @@ export default function PackagesFeature() {
             className="bg-white border border-slate-200/80 hover:border-amber-400/50 rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden flex flex-col group"
           >
             {/* IMAGE */}
-            <div className="relative h-64 md:h-72 overflow-hidden">
+            <Link
+              href={`/packages/${pkg.slug || pkg.id}`}
+              className="relative h-64 md:h-72 overflow-hidden block"
+            >
               <Image
                 src={pkg.image}
                 alt={pkg.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 400px"
                 className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -119,36 +124,54 @@ export default function PackagesFeature() {
               <div className="absolute top-3.5 right-3.5 z-10">
                 <OfferRibbonBadge size="sm" />
               </div>
-            </div>
+            </Link>
 
             {/* CONTENT */}
-            <div className="p-6 flex flex-col flex-1">
-              {/* TITLE */}
-              <h3 className="text-xl font-bold truncate text-[#002855] group-hover:text-amber-700 transition-colors">
-                {pkg.title}
-              </h3>
+            <div className="p-6 flex flex-col flex-1 justify-between">
+              <div>
+                {/* TITLE */}
+                <h3 className="text-xl font-bold truncate text-[#002855] group-hover:text-amber-700 transition-colors">
+                  <Link href={`/packages/${pkg.slug || pkg.id}`}>
+                    {pkg.title}
+                  </Link>
+                </h3>
 
-              {/* LOCATION */}
-              <p className="flex items-center gap-1 text-xs font-medium text-slate-500 mt-1 truncate">
-                <MapPin size={13} className="text-amber-600" /> {pkg.location}
-              </p>
+                {/* LOCATION */}
+                <p className="flex items-center gap-1 text-xs font-medium text-slate-500 mt-1 truncate">
+                  <MapPin size={13} className="text-amber-600" /> {pkg.location}
+                </p>
 
-              {/* DESCRIPTION */}
-              <p className="text-sm text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                {pkg.description}
-              </p>
+                {/* DESCRIPTION */}
+                <p className="text-sm text-slate-600 mt-2.5 line-clamp-3 leading-relaxed font-light">
+                  {pkg.description}
+                </p>
+              </div>
 
-              {/* BUTTON FIXED AT BOTTOM */}
-              <Button
-                className="w-full mt-5 bg-[#002855] hover:bg-[#001733] text-white font-bold text-sm rounded-xl py-2.5 border border-amber-500/20 hover:border-amber-400/60 shadow-xs hover:shadow-md cursor-pointer transition-all duration-200"
-                onClick={() => {
-                  setSelectedPkg(pkg);
-                  setCurrentImage(0);
-                  setSelectedDurationIndex(0);
-                }}
-              >
-                View Details & Itinerary
-              </Button>
+              <div>
+                {/* CUSTOM TOUR & DURATION STRIP */}
+                <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">
+                      Custom Tour
+                    </span>
+                    <p className="text-base font-black text-[#002855]">
+                      Best Price Guaranteed
+                    </p>
+                  </div>
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+                    {pkg.facilities?.durationPlans?.[0]?.duration || "Custom Days"}
+                  </span>
+                </div>
+
+                {/* BUTTON FIXED AT BOTTOM */}
+                <Link
+                  href={`/packages/${pkg.slug || pkg.id}`}
+                  className="w-full mt-4 bg-[#002855] hover:bg-[#001733] text-white font-bold text-sm rounded-xl py-3 border border-amber-500/20 hover:border-amber-400/60 shadow-xs hover:shadow-md cursor-pointer transition-all duration-200 flex items-center justify-center gap-2 group/btn"
+                >
+                  <span>View Full Details & Itinerary</span>
+                  <ArrowRight size={15} className="group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           </div>
         ))}
