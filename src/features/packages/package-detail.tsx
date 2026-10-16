@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -16,6 +16,8 @@ import {
   X,
   Clock,
   ChevronRight,
+  ChevronLeft,
+  Maximize2,
   HelpCircle,
   Compass,
 } from "lucide-react";
@@ -46,6 +48,55 @@ export default function PackageDetailFeature({ pkg }: PackageDetailProps) {
     ? pkg.facilities.tourImages
     : [pkg.image];
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const handlePrevImage = () => {
+    setActiveImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setActiveImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  // Auto-scroll active thumbnail into view when changed via left/right arrows
+  useEffect(() => {
+    if (thumbnailRefs.current[activeImageIndex]) {
+      thumbnailRefs.current[activeImageIndex]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeImageIndex]);
+
+  // Lock body scroll when Lightbox is open
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isLightboxOpen]);
+
+  // Keyboard navigation for Fullscreen Lightbox
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsLightboxOpen(false);
+      } else if (e.key === "ArrowLeft") {
+        handlePrevImage();
+      } else if (e.key === "ArrowRight") {
+        handleNextImage();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isLightboxOpen, images.length]);
 
   const daysList: ItineraryItem[] = currentPlan.itinerary || [];
 
@@ -136,35 +187,87 @@ export default function PackageDetailFeature({ pkg }: PackageDetailProps) {
               {/* PHOTO GALLERY */}
               <div className="bg-white rounded-3xl p-3 sm:p-4 border border-slate-200/80 shadow-md overflow-hidden">
                 {/* Main Hero Image */}
-                <div className="relative h-64 sm:h-96 md:h-[450px] w-full rounded-2xl overflow-hidden bg-slate-900">
+                <div className="relative h-64 sm:h-96 md:h-[480px] w-full rounded-2xl overflow-hidden bg-slate-950 select-none group/gallery flex items-center justify-center">
+                  {/* Atmospheric blurred ambient background so portrait/tall photos look cinematic without empty space */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <Image
+                      src={images[activeImageIndex] || pkg.image}
+                      alt=""
+                      fill
+                      priority
+                      className="object-cover blur-2xl opacity-35 scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/40" />
+                  </div>
+
+                  {/* Foreground sharp uncropped image (object-contain ensures 100% full photo visibility) */}
                   <Image
                     src={images[activeImageIndex] || pkg.image}
                     alt={`${pkg.title} photo ${activeImageIndex + 1}`}
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
-                    className="object-cover transition-all duration-500 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 900px"
+                    className="object-contain relative z-10 transition-all duration-300 drop-shadow-xl"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
 
-                  <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 text-white">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-xs font-semibold">
+                  {/* LEFT & RIGHT NAVIGATION ARROWS */}
+                  {images.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={handlePrevImage}
+                        aria-label="Previous photo"
+                        className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center border border-white/25 shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+                      >
+                        <ChevronLeft size={24} className="-translate-x-0.5" />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleNextImage}
+                        aria-label="Next photo"
+                        className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center border border-white/25 shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+                      >
+                        <ChevronRight size={24} className="translate-x-0.5" />
+                      </button>
+                    </>
+                  )}
+
+                  {/* FULLSCREEN ZOOM BUTTON */}
+                  <button
+                    type="button"
+                    onClick={() => setIsLightboxOpen(true)}
+                    aria-label="View photo in fullscreen"
+                    className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md text-white text-xs font-bold flex items-center gap-1.5 border border-white/20 shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                  >
+                    <Maximize2 size={13} className="text-amber-400" />
+                    <span className="hidden sm:inline">Fullscreen</span>
+                  </button>
+
+                  {/* Photo Counter Badge */}
+                  <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20 text-white">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-xs font-semibold">
                       <span>📸 {activeImageIndex + 1} of {images.length} Photos</span>
                     </span>
                   </div>
                 </div>
 
-                {/* Thumbnail Strip */}
+                {/* Thumbnail Strip (Synchronized with Main Image) */}
                 {images.length > 1 && (
                   <div className="mt-3 flex gap-2.5 overflow-x-auto pb-1.5 pt-1 scrollbar-thin">
                     {images.map((img, idx) => (
                       <button
                         key={idx}
+                        ref={(el) => {
+                          thumbnailRefs.current[idx] = el;
+                        }}
                         onClick={() => setActiveImageIndex(idx)}
+                        aria-label={`View photo ${idx + 1}`}
                         className={`relative w-20 h-14 sm:w-24 sm:h-16 shrink-0 rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
                           activeImageIndex === idx
-                            ? "border-amber-500 scale-105 shadow-md"
-                            : "border-transparent opacity-70 hover:opacity-100"
+                            ? "border-amber-500 ring-2 ring-amber-400/40 scale-105 shadow-md opacity-100"
+                            : "border-transparent opacity-65 hover:opacity-100"
                         }`}
                       >
                         <Image
@@ -667,6 +770,105 @@ export default function PackageDetailFeature({ pkg }: PackageDetailProps) {
             </Link>
           </div>
         </div>
+        {/* FULLSCREEN LIGHTBOX MODAL */}
+        {isLightboxOpen && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex flex-col justify-between p-3 sm:p-6"
+          >
+            {/* Top Bar */}
+            <div className="flex items-center justify-between text-white z-20 pb-3 border-b border-white/10 max-w-7xl mx-auto w-full">
+              <div className="flex items-center gap-3">
+                <span className="text-xs sm:text-sm font-bold text-amber-400">
+                  📸 {activeImageIndex + 1} / {images.length}
+                </span>
+                <span className="hidden sm:inline text-xs text-slate-300 font-light truncate max-w-md">
+                  {pkg.title} - Tour Photos
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsLightboxOpen(false)}
+                  aria-label="Close fullscreen view"
+                  className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-colors cursor-pointer"
+                >
+                  <X size={16} />
+                  <span>Close (Esc)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Main Centered High-Res Image Area */}
+            <div className="relative flex-1 w-full max-w-6xl mx-auto flex items-center justify-center my-2 sm:my-4 select-none">
+              {/* Prev Button */}
+              {images.length > 1 && (
+                <button
+                  type="button"
+                  onClick={handlePrevImage}
+                  aria-label="Previous photo"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-md text-white flex items-center justify-center border border-white/20 shadow-2xl hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                >
+                  <ChevronLeft size={28} className="-translate-x-0.5" />
+                </button>
+              )}
+
+              {/* Fullscreen Foreground Image (100% full view, never cropped) */}
+              <div className="relative w-full h-full max-h-[75vh] flex items-center justify-center">
+                <Image
+                  src={images[activeImageIndex] || pkg.image}
+                  alt={`${pkg.title} photo ${activeImageIndex + 1}`}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-contain drop-shadow-2xl"
+                />
+              </div>
+
+              {/* Next Button */}
+              {images.length > 1 && (
+                <button
+                  type="button"
+                  onClick={handleNextImage}
+                  aria-label="Next photo"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-md text-white flex items-center justify-center border border-white/20 shadow-2xl hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                >
+                  <ChevronRight size={28} className="translate-x-0.5" />
+                </button>
+              )}
+            </div>
+
+            {/* Bottom Thumbnail Strip inside Lightbox */}
+            {images.length > 1 && (
+              <div className="pt-2 border-t border-white/10 max-w-4xl mx-auto w-full">
+                <div className="flex gap-2 overflow-x-auto pb-1 justify-center scrollbar-thin">
+                  {images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      aria-label={`Go to photo ${idx + 1}`}
+                      className={`relative w-14 h-10 sm:w-16 sm:h-12 shrink-0 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                        activeImageIndex === idx
+                          ? "border-amber-400 scale-105 opacity-100 ring-2 ring-amber-400/50"
+                          : "border-transparent opacity-50 hover:opacity-100"
+                      }`}
+                    >
+                      <Image
+                        src={img}
+                        alt={`Thumbnail ${idx + 1}`}
+                        fill
+                        sizes="70px"
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </main>
     </>
   );
