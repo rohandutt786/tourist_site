@@ -19,7 +19,7 @@ export default function HomeTours() {
   };
 
   return (
-    <section id="packages" className="max-w-[1600px] mx-auto px-6 py-20 bg-gradient-to-b from-white via-slate-50/50 to-white">
+    <section id="packages" className="scroll-mt-28 max-w-[1600px] mx-auto px-6 py-20 bg-gradient-to-b from-white via-slate-50/50 to-white">
       {/* SECTION HEADER */}
       <div className="text-center mb-14 max-w-3xl mx-auto">
         <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200/80 mb-3 shadow-xs">
@@ -45,6 +45,7 @@ export default function HomeTours() {
             <Link
               key={tour.id}
               href={`/packages/${tourSlugMap[tour.id] || ""}`}
+              scroll={true}
               className="mx-4 sm:mx-6 w-[310px] sm:w-[350px] block group select-none py-3"
             >
               <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl border border-slate-200/80 hover:border-amber-400/50 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden flex flex-col h-[490px] sm:h-[510px]">

@@ -9,9 +9,16 @@ export default function HomeHero() {
   const { homeHero } = content;
 
   const handleScroll = () => {
-    document.getElementById("packages")?.scrollIntoView({
-      behavior: "smooth",
-    });
+    const el = document.getElementById("packages");
+    if (el) {
+      const headerOffset = 104; // 96px header + 8px breathing space
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (

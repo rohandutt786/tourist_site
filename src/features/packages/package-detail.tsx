@@ -98,6 +98,11 @@ export default function PackageDetailFeature({ pkg }: PackageDetailProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isLightboxOpen, images.length]);
 
+  // Always scroll to top when package detail page mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pkg.id]);
+
   const daysList: ItineraryItem[] = currentPlan.itinerary || [];
 
   const whatsappMessage = encodeURIComponent(
@@ -108,7 +113,7 @@ export default function PackageDetailFeature({ pkg }: PackageDetailProps) {
     <>
       <PackageJsonLd pkg={pkg} currentPlan={currentPlan} />
 
-      <main className="min-h-screen bg-slate-50/60 pb-28 md:pb-20 font-sans">
+      <div className="min-h-screen bg-slate-50/60 pb-28 md:pb-20 font-sans">
         {/* TOP BREADCRUMB */}
         <div className="bg-white/80 border-b border-slate-200/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center text-xs sm:text-sm text-slate-500 overflow-x-auto whitespace-nowrap">
@@ -869,7 +874,7 @@ export default function PackageDetailFeature({ pkg }: PackageDetailProps) {
             )}
           </div>
         )}
-      </main>
+      </div>
     </>
   );
 }

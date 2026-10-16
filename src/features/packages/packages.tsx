@@ -166,6 +166,7 @@ export default function PackagesFeature() {
                 {/* BUTTON FIXED AT BOTTOM */}
                 <Link
                   href={`/packages/${pkg.slug || pkg.id}`}
+                  scroll={true}
                   className="w-full mt-4 bg-[#002855] hover:bg-[#001733] text-white font-bold text-sm rounded-xl py-3 border border-amber-500/20 hover:border-amber-400/60 shadow-xs hover:shadow-md cursor-pointer transition-all duration-200 flex items-center justify-center gap-2 group/btn"
                 >
                   <span>View Full Details & Itinerary</span>

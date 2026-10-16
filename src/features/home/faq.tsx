@@ -14,7 +14,7 @@ export default function HomeFaq() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden" id="faq">
+    <section className="scroll-mt-28 py-20 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden" id="faq">
       {/* Decorative ambient background accents */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-amber-400/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-[#002855]/5 rounded-full blur-3xl pointer-events-none" />
