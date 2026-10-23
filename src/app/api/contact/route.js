@@ -1,10 +1,20 @@
 import nodemailer from "nodemailer";
 import { renderTemplate } from "@/nodemailer/template.service";
 import { contactSchema } from "@/features/contact-us/schema";
+import { submissionGuard } from "@/lib/submission-guard";
 
 export async function POST(req) {
   try {
     const rawBody = await req.json();
+
+    // Honeypot bot protection
+    if (rawBody.hp_website && rawBody.hp_website.trim().length > 0) {
+      return Response.json({
+        success: true,
+        message: "Your inquiry has been received! Our travel team will contact you shortly.",
+      });
+    }
+
     const validation = contactSchema.safeParse(rawBody);
 
     if (!validation.success) {
@@ -30,6 +40,22 @@ export async function POST(req) {
       budget,
       message,
     } = validation.data;
+
+    const forwarded = req.headers.get("x-forwarded-for");
+    const clientIp = forwarded
+      ? forwarded.split(",")[0].trim()
+      : req.headers.get("x-real-ip") || "unknown";
+
+    const guardCheck = submissionGuard.canSubmitContact(email, clientIp);
+    if (!guardCheck.allowed) {
+      return Response.json(
+        {
+          success: false,
+          message: guardCheck.message,
+        },
+        { status: 429 }
+      );
+    }
 
     const adminEmail = process.env.ADMIN_EMAIL || "namohtourism@gmail.com";
     const adminPass = process.env.ADMIN_EMAIL_PASS;
@@ -116,6 +142,8 @@ export async function POST(req) {
     } else {
       console.warn("⚠️ ADMIN_EMAIL_PASS not configured in .env.local. Inquiry logged successfully to console.");
     }
+
+    submissionGuard.recordContactSubmission(email, clientIp);
 
     return Response.json({
       success: true,

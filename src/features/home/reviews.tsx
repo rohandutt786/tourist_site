@@ -1,5 +1,6 @@
 import { Star, Quote, CheckCircle2 } from "lucide-react";
 import content from "@/data/content.json";
+import ReviewDialog from "./review-dialog";
 
 export default function HomeReviews() {
   const reviews = (content as any).reviews || [];
@@ -19,6 +20,10 @@ export default function HomeReviews() {
           <p className="text-slate-600 mt-3 text-base sm:text-lg leading-relaxed font-light">
             Real feedback from families, couples, and adventurers who trusted Namoh Tourism with their holidays.
           </p>
+
+          <div className="mt-6 flex items-center justify-center">
+            <ReviewDialog />
+          </div>
         </div>
 
         {/* Reviews Grid */}
