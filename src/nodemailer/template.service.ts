@@ -4,7 +4,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as handlebars from "handlebars";
 
-type FileNameMap = "inquiry" | "user-thankyou";
+type FileNameMap = "inquiry" | "user-thankyou" | "review";
 
 type FileName = `${FileNameMap}.hbs` | FileNameMap;
 

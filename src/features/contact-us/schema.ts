@@ -83,6 +83,8 @@ export const contactSchema = z.object({
     .max(1000, "Message cannot exceed 1000 characters")
     .optional()
     .or(z.literal("")),
+
+  hp_website: z.string().optional(),
 });
 
 

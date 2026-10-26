@@ -35,6 +35,7 @@ export default function ContactUsFeature() {
     persons: "",
     budget: "",
     message: "",
+    hp_website: "",
   });
 
   useEffect(() => {
@@ -166,7 +167,13 @@ export default function ContactUsFeature() {
           persons: "",
           budget: "",
           message: "",
+          hp_website: "",
         });
+        try {
+          localStorage.setItem("namoh_last_contact_submitted", String(Date.now()));
+        } catch {
+          // ignore storage error
+        }
       } else {
         toast.error(data.message || "Something went wrong ");
       }
@@ -249,6 +256,19 @@ export default function ContactUsFeature() {
             )}
 
             <form className="space-y-2.5" onSubmit={handleSubmit}>
+              {/* Bot Honeypot */}
+              <input
+                type="text"
+                name="hp_website"
+                value={formData.hp_website}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden opacity-0 pointer-events-none absolute"
+                style={{ display: "none" }}
+              />
+
               {/* Row 1: Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
