@@ -20,7 +20,7 @@ export default function TravelAgencyJsonLd() {
         "image": `${baseUrl}/images/og-share.jpg`,
         "description": "Namoh Tourism is a trusted tour operator based in Shimla, Himachal Pradesh, specializing in handcrafted holiday packages, verified hotel stays, and private cab services across India.",
         "telephone": "+91-8580636332",
-        "email": "namohtourism@gmail.com",
+        "email": "business.namohtourism@gmail.com",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Prasad Bhawan, Khalini",
