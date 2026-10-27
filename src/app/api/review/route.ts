@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL || "namohtourism@gmail.com";
+    const adminEmail = process.env.ADMIN_EMAIL || "business.namohtourism@gmail.com";
     const adminPass = process.env.ADMIN_EMAIL_PASS;
 
     const formattedDate = new Date().toLocaleDateString("en-US", {

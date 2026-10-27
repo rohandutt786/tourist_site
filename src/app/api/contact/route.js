@@ -57,7 +57,7 @@ export async function POST(req) {
       );
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL || "namohtourism@gmail.com";
+    const adminEmail = process.env.ADMIN_EMAIL || "business.namohtourism@gmail.com";
     const adminPass = process.env.ADMIN_EMAIL_PASS;
 
     // If email credentials are provided, attempt to send emails via Gmail SMTP
